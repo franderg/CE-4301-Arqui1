@@ -48,6 +48,7 @@ module InstructionMem(Pc,clk,OpCode,RS,RT,RD,IMM,JADDR,UsableInstruc,NEWPC);
 	
 	end 
 	
+	
 	 wire [31:0] instruction;
 	 rom rom1(
 		.address(Pc),

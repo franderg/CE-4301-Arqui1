@@ -17,7 +17,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition"
 
-// DATE "10/15/2017 11:58:04"
+// DATE "10/15/2017 12:55:19"
 
 // 
 // Device: Altera 5CSEMA5F31C6 Package FBGA896
@@ -44,7 +44,7 @@ input 	clk;
 input 	Reset;
 
 // Design Ports Information
-// clk	=>  Location: PIN_AF15,	 I/O Standard: 3.3-V LVCMOS,	 Current Strength: Default
+// clk	=>  Location: PIN_AF14,	 I/O Standard: 3.3-V LVCMOS,	 Current Strength: Default
 // Reset	=>  Location: PIN_AB12,	 I/O Standard: 3.3-V LVCMOS,	 Current Strength: Default
 // altera_reserved_tms	=>  Location: PIN_V9,	 I/O Standard: 3.3-V LVCMOS,	 Current Strength: Default
 // altera_reserved_tck	=>  Location: PIN_AC5,	 I/O Standard: 3.3-V LVCMOS,	 Current Strength: Default
@@ -5468,7 +5468,7 @@ defparam \insmem|rom1|altsyncram_component|auto_generated|mgl_prim2|enable_write
 defparam \insmem|rom1|altsyncram_component|auto_generated|mgl_prim2|enable_write~0 .shared_arith = "off";
 // synopsys translate_on
 
-// Location: IOIBUF_X32_Y0_N18
+// Location: IOIBUF_X32_Y0_N1
 cyclonev_io_ibuf \clk~input (
 	.i(clk),
 	.ibar(gnd),

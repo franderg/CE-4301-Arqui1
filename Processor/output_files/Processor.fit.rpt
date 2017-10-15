@@ -1,5 +1,5 @@
 Fitter report for Processor
-Sun Oct 15 11:57:37 2017
+Sun Oct 15 12:54:51 2017
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -62,7 +62,7 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Sun Oct 15 11:57:37 2017       ;
+; Fitter Status                   ; Successful - Sun Oct 15 12:54:51 2017       ;
 ; Quartus Prime Version           ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; Processor                                   ;
 ; Top-level Entity Name           ; Processor                                   ;
@@ -158,7 +158,7 @@ agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   1.9%      ;
+;     Processor 2            ;   2.0%      ;
 +----------------------------+-------------+
 
 
@@ -420,7 +420,7 @@ The pin-out file can be found in /home/ferllini13/Desktop/CE-4301-Arqui1/Process
 ; Name  ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination ; Termination Control Block ; Location assigned by ; Slew Rate ;
 +-------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+-----------+
 ; Reset ; AB12  ; 3A       ; 12           ; 0            ; 17           ; 3                     ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVCMOS ; Off         ; --                        ; User                 ; no        ;
-; clk   ; AF15  ; 3B       ; 32           ; 0            ; 17           ; 11                    ; 0                  ; yes    ; no             ; no              ; no       ; Off          ; 3.3-V LVCMOS ; Off         ; --                        ; User                 ; no        ;
+; clk   ; AF14  ; 3B       ; 32           ; 0            ; 0            ; 11                    ; 0                  ; yes    ; no             ; no              ; no       ; Off          ; 3.3-V LVCMOS ; Off         ; --                        ; User                 ; no        ;
 +-------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+-----------+
 
 
@@ -642,8 +642,8 @@ The pin-out file can be found in /home/ferllini13/Desktop/CE-4301-Arqui1/Process
 ; AF11     ; 87         ; 3B             ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; AF12     ;            ;                ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; AF13     ; 93         ; 3B             ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
-; AF14     ; 114        ; 3B             ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
-; AF15     ; 112        ; 3B             ; clk                             ; input  ; 3.3-V LVCMOS ;                     ; Column I/O   ; Y               ; no       ; Off          ;
+; AF14     ; 114        ; 3B             ; clk                             ; input  ; 3.3-V LVCMOS ;                     ; Column I/O   ; Y               ; no       ; Off          ;
+; AF15     ; 112        ; 3B             ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; AF16     ; 137        ; 4A             ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
 ; AF17     ;            ;                ; GND                             ; gnd    ;              ;                     ; --           ;                 ; --       ; --           ;
 ; AF18     ; 133        ; 4A             ; RESERVED_INPUT_WITH_WEAK_PULLUP ;        ;              ;                     ; Column I/O   ;                 ; no       ; On           ;
@@ -1419,7 +1419,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; SimpleReg:pcreg|DataOut[16]~0                                                                                                                                                                                                                                                                                                                              ; MLABCELL_X6_Y3_N30 ; 7       ; Sync. clear                ; no     ; --                   ; --               ; --                        ;
 ; altera_internal_jtag~TCKUTAP                                                                                                                                                                                                                                                                                                                               ; JTAG_X0_Y2_N3      ; 158     ; Clock                      ; no     ; --                   ; --               ; --                        ;
 ; altera_internal_jtag~TMSUTAP                                                                                                                                                                                                                                                                                                                               ; JTAG_X0_Y2_N3      ; 23      ; Sync. clear                ; no     ; --                   ; --               ; --                        ;
-; clk                                                                                                                                                                                                                                                                                                                                                        ; PIN_AF15           ; 11      ; Clock                      ; yes    ; Global Clock         ; GCLK6            ; --                        ;
+; clk                                                                                                                                                                                                                                                                                                                                                        ; PIN_AF14           ; 11      ; Clock                      ; yes    ; Global Clock         ; GCLK6            ; --                        ;
 ; sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|clr_reg                                   ; FF_X1_Y2_N44       ; 24      ; Async. clear               ; no     ; --                   ; --               ; --                        ;
 ; sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|design_hash_reg[1]~3                      ; LABCELL_X1_Y5_N54  ; 4       ; Clock enable               ; no     ; --                   ; --               ; --                        ;
 ; sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|hub_info_reg_ena~0                        ; LABCELL_X1_Y5_N30  ; 4       ; Clock enable               ; no     ; --                   ; --               ; --                        ;
@@ -1446,7 +1446,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------+----------+---------+----------------------+------------------+---------------------------+
 ; Name ; Location ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +------+----------+---------+----------------------+------------------+---------------------------+
-; clk  ; PIN_AF15 ; 11      ; Global Clock         ; GCLK6            ; --                        ;
+; clk  ; PIN_AF14 ; 11      ; Global Clock         ; GCLK6            ; --                        ;
 +------+----------+---------+----------------------+------------------+---------------------------+
 
 
@@ -1802,7 +1802,7 @@ Info (332111): Found 1 clocks
     Info (332111):   33.333 altera_reserved_tck
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:22
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:20
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:02
@@ -1815,18 +1815,18 @@ Info (170195): Router estimated average interconnect usage is 0% of the availabl
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:04
-Info (11888): Total time spent on timing analysis during the Fitter is 1.57 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 1.59 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:04
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:05
 Info (144001): Generated suppressed messages file /home/ferllini13/Desktop/CE-4301-Arqui1/Processor/output_files/Processor.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 2113 megabytes
-    Info: Processing ended: Sun Oct 15 11:57:37 2017
-    Info: Elapsed time: 00:01:08
-    Info: Total CPU time (on all processors): 00:01:37
+    Info: Peak virtual memory: 2115 megabytes
+    Info: Processing ended: Sun Oct 15 12:54:52 2017
+    Info: Elapsed time: 00:01:04
+    Info: Total CPU time (on all processors): 00:01:32
 
 
 +----------------------------+

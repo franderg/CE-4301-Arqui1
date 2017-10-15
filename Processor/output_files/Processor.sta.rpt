@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for Processor
-Sun Oct 15 11:58:01 2017
+Sun Oct 15 12:55:15 2017
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -103,12 +103,12 @@ agreement for further details.
 ; Number detected on machine ; 4           ;
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
-; Average used               ; 1.09        ;
+; Average used               ; 1.10        ;
 ; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   9.3%      ;
+;     Processor 2            ;   9.7%      ;
 +----------------------------+-------------+
 
 
@@ -117,7 +117,7 @@ agreement for further details.
 +---------------+--------+--------------------------+
 ; SDC File Path ; Status ; Read at                  ;
 +---------------+--------+--------------------------+
-; Processor.sdc ; OK     ; Sun Oct 15 11:57:54 2017 ;
+; Processor.sdc ; OK     ; Sun Oct 15 12:55:08 2017 ;
 +---------------+--------+--------------------------+
 
 
@@ -552,7 +552,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Sun Oct 15 11:57:51 2017
+    Info: Processing started: Sun Oct 15 12:55:06 2017
 Info: Command: quartus_sta Processor -c Processor
 Info: qsta_default_script.tcl version: #1
 Info (20032): Parallel compilation is enabled and will use up to 2 processors
@@ -669,9 +669,9 @@ Info (332146): Worst-case minimum pulse width slack is 14.852
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 1200 megabytes
-    Info: Processing ended: Sun Oct 15 11:58:01 2017
-    Info: Elapsed time: 00:00:10
+    Info: Peak virtual memory: 1201 megabytes
+    Info: Processing ended: Sun Oct 15 12:55:15 2017
+    Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:10
 
 
