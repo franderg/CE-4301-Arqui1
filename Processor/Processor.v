@@ -1,7 +1,8 @@
 `timescale 1ns / 1ps
 
-module Processor(clk,Reset);
+module Processor(clk,Reset,seven);
 	input clk, Reset;
+	output [6:0]seven;
 	
 	
 	wire [31:0] pcsignal;
@@ -131,6 +132,12 @@ module Processor(clk,Reset);
 	MuxReg reg1(.Output(muxout1), .Input0(rs1), .Input1(rd1), .Input2(rs1),.Selector(regselector));
 	MuxReg reg2(.Output(muxout2), .Input0(rt1), .Input1(rs1), .Input2(rd1),.Selector(regselector));
 	
+	wire [31:0] r;
+	wire[6:0] seven1; 
+	
+	sevenSeg ss(.R(r),.Seg(seven1));
+	
+	assign seven =seven1;
 	
 	RegisterBanc regbank(
 		.ReadData1(rdata1),
@@ -140,7 +147,8 @@ module Processor(clk,Reset);
 		.ReadAddr2(muxout2),
 		.WriteAddr(writeaddress1),
 		.RegWrite(regwrite3),
-		.clk(clk)
+		.clk(clk),
+		.ro(r)
 	);		
 
 

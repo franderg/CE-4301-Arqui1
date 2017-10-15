@@ -77,7 +77,6 @@ module InstructionMem(Pc,clk,OpCode,RS,RT,RD,IMM,JADDR,UsableInstruc,NEWPC);
                                                                 
 	 end
 	 assign NEWPC = (OpCode==5'd16)? JADDR: Pc+1; 
-	 
 
 	 
 endmodule

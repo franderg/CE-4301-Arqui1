@@ -1,10 +1,11 @@
 `timescale 1ns / 1ps
 
-module RegisterBanc(ReadData1, ReadData2, WriteData,ReadAddr1, ReadAddr2, WriteAddr, RegWrite, clk);
+module RegisterBanc(ReadData1, ReadData2, WriteData,ReadAddr1, ReadAddr2, WriteAddr, RegWrite, clk , ro);
     output [31:0] ReadData1, ReadData2;
     input [31:0] WriteData;
     input [4:0] ReadAddr1, ReadAddr2, WriteAddr;
-    input RegWrite, clk;
+    input [0:0] RegWrite, clk;
+	 output [31:0] ro;
 
 
     reg [31:0] Register [0:31];
@@ -55,5 +56,6 @@ module RegisterBanc(ReadData1, ReadData2, WriteData,ReadAddr1, ReadAddr2, WriteA
     
     assign ReadData1 = Register[ReadAddr1];
     assign ReadData2 = Register[ReadAddr2];
+	 assign ro=Register[2];
 
 endmodule
