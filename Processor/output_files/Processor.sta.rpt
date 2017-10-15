@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for Processor
-Sun Oct 15 14:33:15 2017
+Sun Oct 15 15:30:04 2017
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -109,7 +109,7 @@ agreement for further details.
 +---------------+--------+--------------------------+
 ; SDC File Path ; Status ; Read at                  ;
 +---------------+--------+--------------------------+
-; Processor.sdc ; OK     ; Sun Oct 15 14:33:12 2017 ;
+; Processor.sdc ; OK     ; Sun Oct 15 15:30:00 2017 ;
 +---------------+--------+--------------------------+
 
 
@@ -414,43 +414,13 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Sun Oct 15 14:33:10 2017
+    Info: Processing started: Sun Oct 15 15:29:59 2017
 Info: Command: quartus_sta Processor -c Processor
 Info: qsta_default_script.tcl version: #1
 Info (20032): Parallel compilation is enabled and will use up to 2 processors
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Info (332104): Reading SDC File: 'Processor.sdc'
-Warning (332174): Ignored filter at Processor.sdc(42): altera_reserved_tck could not be matched with a port File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 42
-Warning (332049): Ignored create_clock at Processor.sdc(42): Argument <targets> is an empty collection File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 42
-    Info (332050): create_clock -name {altera_reserved_tck} -period 33.333 -waveform { 0.000 16.666 } [get_ports {altera_reserved_tck}] File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 42
-Warning (332174): Ignored filter at Processor.sdc(61): altera_reserved_tck could not be matched with a clock File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 61
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(61): Argument -rise_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 61
-    Info (332050): set_clock_uncertainty -rise_from [get_clocks {altera_reserved_tck}] -rise_to [get_clocks {altera_reserved_tck}] -setup 0.310   File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 61
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(61): Argument -rise_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 61
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(62): Argument -rise_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 62
-    Info (332050): set_clock_uncertainty -rise_from [get_clocks {altera_reserved_tck}] -rise_to [get_clocks {altera_reserved_tck}] -hold 0.270   File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 62
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(62): Argument -rise_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 62
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(63): Argument -rise_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 63
-    Info (332050): set_clock_uncertainty -rise_from [get_clocks {altera_reserved_tck}] -fall_to [get_clocks {altera_reserved_tck}] -setup 0.310   File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 63
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(63): Argument -fall_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 63
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(64): Argument -rise_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 64
-    Info (332050): set_clock_uncertainty -rise_from [get_clocks {altera_reserved_tck}] -fall_to [get_clocks {altera_reserved_tck}] -hold 0.270   File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 64
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(64): Argument -fall_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 64
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(65): Argument -fall_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 65
-    Info (332050): set_clock_uncertainty -fall_from [get_clocks {altera_reserved_tck}] -rise_to [get_clocks {altera_reserved_tck}] -setup 0.310   File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 65
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(65): Argument -rise_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 65
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(66): Argument -fall_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 66
-    Info (332050): set_clock_uncertainty -fall_from [get_clocks {altera_reserved_tck}] -rise_to [get_clocks {altera_reserved_tck}] -hold 0.270   File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 66
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(66): Argument -rise_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 66
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(67): Argument -fall_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 67
-    Info (332050): set_clock_uncertainty -fall_from [get_clocks {altera_reserved_tck}] -fall_to [get_clocks {altera_reserved_tck}] -setup 0.310   File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 67
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(67): Argument -fall_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 67
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(68): Argument -fall_from with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 68
-    Info (332050): set_clock_uncertainty -fall_from [get_clocks {altera_reserved_tck}] -fall_to [get_clocks {altera_reserved_tck}] -hold 0.270   File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 68
-Warning (332049): Ignored set_clock_uncertainty at Processor.sdc(68): Argument -fall_to with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 68
-Warning (332049): Ignored set_clock_groups at Processor.sdc(87): Argument -group with value [get_clocks {altera_reserved_tck}] contains zero elements File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 87
-    Info (332050): set_clock_groups -asynchronous -group [get_clocks {altera_reserved_tck}]  File: /home/frander/Downloads/CE-4301-Arqui1/Processor/Processor.sdc Line: 87
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
 Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
 Warning (332068): No clocks defined in design.
@@ -502,9 +472,9 @@ Info (332140): No Removal paths to report
 Info (332140): No Minimum Pulse Width paths to report
 Info (332101): Design is fully constrained for setup requirements
 Info (332101): Design is fully constrained for hold requirements
-Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 24 warnings
-    Info: Peak virtual memory: 1140 megabytes
-    Info: Processing ended: Sun Oct 15 14:33:15 2017
+Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 1139 megabytes
+    Info: Processing ended: Sun Oct 15 15:30:04 2017
     Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:05
 

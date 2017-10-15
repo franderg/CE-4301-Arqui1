@@ -1,13 +1,13 @@
 |Processor
 clk => clk.IN9
 Reset => Reset.IN6
-seven[0] <= opcode[0].DB_MAX_OUTPUT_PORT_TYPE
-seven[1] <= opcode[1].DB_MAX_OUTPUT_PORT_TYPE
-seven[2] <= opcode[2].DB_MAX_OUTPUT_PORT_TYPE
-seven[3] <= opcode[3].DB_MAX_OUTPUT_PORT_TYPE
-seven[4] <= opcode[4].DB_MAX_OUTPUT_PORT_TYPE
-seven[5] <= <GND>
-seven[6] <= <GND>
+seven[0] << opcode[0].DB_MAX_OUTPUT_PORT_TYPE
+seven[1] << opcode[1].DB_MAX_OUTPUT_PORT_TYPE
+seven[2] << opcode[2].DB_MAX_OUTPUT_PORT_TYPE
+seven[3] << opcode[3].DB_MAX_OUTPUT_PORT_TYPE
+seven[4] << opcode[4].DB_MAX_OUTPUT_PORT_TYPE
+seven[5] << <GND>
+seven[6] << <GND>
 
 
 |Processor|MuxData:pcselectmux
