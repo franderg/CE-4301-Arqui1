@@ -11,7 +11,7 @@ import binascii
 #Lista con las instrucciones del ISA
 instructionList = ["ADD","SUB","ADDI","SUBI","MLT","MLTI","AND","OR","ANDI","ORI",
                    "SLR","SLL","LDR","STR","BNE","BEQ","CMP","J"];
-#Lista con el código de operación de la instrucción
+#Lista con el codigo de operacion de la instruccion
 opcodeList = ["00000","00001","00010","00011","00100","00101","00110","00111",
               "01000","01001","01010","01011","01100","01101","01110","01111","10000","10001"];
 #Lista para determinar si el tercer operando es inmediato
@@ -114,22 +114,22 @@ def riesgos(instructionTable):
     i = 0;  #indice de la lista
     indice = 0;
     while(i < len(instructionTable)):  #mientras el indice sea mejor al largo de la lista
-        if(len(instructionTable[i]) > 2):  #se verifican que las instrucciones tengan más de 2 argumentos
+        if(len(instructionTable[i]) > 2):  #se verifican que las instrucciones tengan mas de 2 argumentos
             if(instructionTable[i][0] == "BEQ" or instructionTable[i][0] == "BNE"): #todo branch lleva nops
                 agregaNop(instructionTable,i);#se agregan nops
                 i = i+4; # se aumenta el indice por los nops agregados
             else:
-                r1 = instructionTable[i][1]; #registro 1 de la instrucción
+                r1 = instructionTable[i][1]; #registro 1 de la instruccion
                 for j in range(i+1,i+4):
                 #mientras no se salga del rango de la lista, verifica hasta 3 instrucciones adelante
                     if (len(instructionTable) <= j):
                         break;
                     else:
-                        if(len(instructionTable[j]) <= 2): # se revisa que la siguiente instrucción no sea salto o etiqueta
+                        if(len(instructionTable[j]) <= 2): # se revisa que la siguiente instruccion no sea salto o etiqueta
                             j += 1;
                         else:
-                            r2 = instructionTable[j][2]; # segundo registro de la instrucción
-                            opcode = opCodeOptain(instructionTable[j][0]); #se obtiene el código de operacion para determinar si es branch
+                            r2 = instructionTable[j][2]; # segundo registro de la instruccion
+                            opcode = opCodeOptain(instructionTable[j][0]); #se obtiene el codigo de operacion para determinar si es branch
                             if(opcode[0] == "BNE" or opcode[0] == "BEQ"):#revisa si son branches
                                  if(instructionTable[j][1] == r1 or r2 == r1): # si hay dependencia agrega NOPS para evitar el riesgo
                                      agregaNop(instructionTable,i);#se agregan nops
@@ -138,7 +138,7 @@ def riesgos(instructionTable):
                                  else:
                                      j = j+1;
                             elif(immediateList[opcode[1]] == 0):#No es inmediato
-                                r3 = instructionTable[j][3]#[:-1]; # se tiene el tercer registro de la instrucción
+                                r3 = instructionTable[j][3]#[:-1]; # se tiene el tercer registro de la instruccion
                                 if(r2 == r1 or r3 == r1):
                                     agregaNop(instructionTable,i);#se agregan nops
                                     i = i+3;
@@ -169,12 +169,11 @@ def agrega(instruction,line):
         for i in instruction:
             instruction[j] = i.replace("\n","");
             j += 1;
-        
         if(instruction[0] == "" or instruction[0] == "\n"): # omite los \n y comentarios
             return 1;
         if(len(instruction) > 4 or len(instruction) == 3):# error en la instruccion
             instructionTable.append(instruction)
-            print("Error del código fuente en la línea: " + str(line))
+            print("Error del codigo fuente en la linea: " + str(line))
             return -1;
         else:
             instructionTable.append(instruction)
@@ -184,14 +183,14 @@ def agrega(instruction,line):
 
 def write(instructionTable,depth):
     riesgos(instructionTable);
-    with open('salida.mif', 'w') as archive:
+    with open('Program.mif', 'w') as archive:
         print( "DEPTH = " + str(depth) + ";", file=archive);
         print("WIDTH = 32;", file=archive);
         print("ADDRESS_RADIX = HEX;", file=archive);
         print("DATA_RADIX = BIN; ", file=archive);
         print("CONTENT", file=archive);
         print("BEGIN", file=archive);
-        print(str(0) + " : " + nop, file=archive);
+        print(str(0) + " : " + nop + ";", file=archive);
         cont = 1;
         indice = 0;
         for i in instructionTable:
@@ -213,21 +212,21 @@ def write(instructionTable,depth):
                 indice += 1;
         for i in instructionTable:
             if (i[0].upper() == 'FIN'):
-                print(str(hex(cont)[2:]) + " : " + end, file=archive);
-                print(str(hex(cont)[2:]) + " : " + nop, file=archive);
+                print(str(hex(cont)[2:]) + " : " + end + ";", file=archive);
+                cont = cont + 1;
+                print(str(hex(cont)[2:]) + " : " + nop + ";", file=archive);
                 cont = cont + 1;
             elif (i[0] == 'NOP' or len(i) != 1):
                 test = binario(i);
                 if(test != -1):
-                    print(str(hex(cont)[2:]) + " : " + binario(i), file=archive);
+                    print(str(hex(cont)[2:]) + " : " + binario(i) + ";", file=archive);
                     cont = cont + 1;
                 else:                    
                     print("Error en el código fuente");
                     return -1;
         while(cont < depth):
-            print(str(hex(cont)[2:]) + " : " + nop, file=archive);
+            print(str(hex(cont)[2:]) + " : " + nop + ";", file=archive);
             cont = cont + 1;
-        print(str(hex(cont)[2:]) + " : " + end, file=archive);
         print("END;", file=archive);
 
 def read(source):
@@ -259,7 +258,7 @@ def texto(source):
         listaTexto[indice] = ceros + i;
         indice += 1;          
 
-    with open('texto.mif', 'w') as archive:
+    with open('Text.mif', 'w') as archive:
         print( "DEPTH = " + str(9142) + ";", file=archive);
         print("WIDTH = 7;", file=archive);
         print("ADDRESS_RADIX = HEX;", file=archive);
@@ -267,11 +266,14 @@ def texto(source):
         print("CONTENT", file=archive);
         print("BEGIN", file=archive);
         cont = 0;        
-        while(cont <= 9142):
+        while(cont < 9142):
             for i in listaTexto:
-                if(cont <= 9142):
-                    print(str(hex(cont)[2:]) + " : " + i, file=archive);
+                if(cont < 9142):
+                    print(str(hex(cont)[2:]) + " : " + i + ";", file=archive);
                     cont +=1;
                 else:
                     break;
         print("END;", file=archive);
+
+#read('algoritmos');
+#texto('Lorem_Ipsum');
