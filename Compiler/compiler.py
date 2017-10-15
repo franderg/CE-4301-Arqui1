@@ -9,17 +9,21 @@
 import binascii
 
 #Lista con las instrucciones del ISA
-instructionList = ["ADD","SUB","ADDI","SUBI","MLT","MLTI","AND","OR","ANDI","ORI","SLR","SLL","LDR","STR","BNE","BEQ","CMP","J"];
+instructionList = ["ADD","SUB","ADDI","SUBI","MLT","MLTI","AND","OR","ANDI","ORI",
+                   "SLR","SLL","LDR","STR","BNE","BEQ","CMP","J"];
 #Lista con el código de operación de la instrucción
-opcodeList = ["00000","00001","00010","00011","00100","00101","00110","00111","01000","01001","01010","01011","01100","01101","01110","01111","10000","10001","10010","100 11"];
+opcodeList = ["00000","00001","00010","00011","00100","00101","00110","00111",
+              "01000","01001","01010","01011","01100","01101","01110","01111","10000","10001"];
 #Lista para determinar si el tercer operando es inmediato
-immediateList = [0,0,1,1,0,1,0,0,1,1,1,1,1,1,0,0,0,0];
+immediateList = [0,0,1,1,0,1,0,0,1,1,1,1,1,1,0,0,0];
 #Tabla con todos las instrucciones
 instructionTable = [];
 #Lorem_Ipsum
 lorem = ['L','o','r','e','m',' ','i','p','s','u','m']
 #nop
 nop="11111000000000000000000000000000"
+#end
+end="11111111111111111111111111111111"
 
 
 ############################################################
@@ -47,7 +51,6 @@ def opCodeOptain(opcode):
 #Cambia las etiquetas por las direcciones en memoria
 
 def etiqueta(instruction,n):
-    print(instruction,n)
     etiqueta = instruction[n][:-1].upper();
     i = 0;
     while(i < len(instructionTable)):
@@ -66,7 +69,7 @@ def binario(instruction):
         if (instruction[0].upper() == "NOP"):
             return nop;
         else:
-            etiqueta = instruction[0][:-1].upper()
+            etiqueta = instruction[0].upper()
             return etiqueta;
         #logica para direccion de etiquetas
     else: 
@@ -86,12 +89,15 @@ def binario(instruction):
                 rt = instruction[3];
                 #se revisa si el tercer argumento es inmediato
                 if immediateList[n] != 1:
-                    #no es inmediato
-                    rt = agregaCeros(instruction[3][1:],5);
-                    rt += "000000000000"
+                    if(instruction[3][0]=="R"):
+                        #no es inmediato
+                        rt = agregaCeros(instruction[3][1:],5);
+                        rt += "000000000000"
+                    else:
+                        return -1;
                 else:
                     #inmediato
-                    rt = agregaCeros(instruction[3][1:],17);                        
+                    rt = agregaCeros(instruction[3],17);                        
         else: #saltos
             etiqueta = agregaCeros(instruction[1],27);
 
@@ -106,48 +112,49 @@ def agregaNop(tabla,i):
 
 def riesgos(instructionTable):
     i = 0;  #indice de la lista
-    j = 0;  #indice para los NOPS
+    indice = 0;
     while(i < len(instructionTable)):  #mientras el indice sea mejor al largo de la lista
         if(len(instructionTable[i]) > 2):  #se verifican que las instrucciones tengan más de 2 argumentos
             if(instructionTable[i][0] == "BEQ" or instructionTable[i][0] == "BNE"): #todo branch lleva nops
                 agregaNop(instructionTable,i);#se agregan nops
                 i = i+4; # se aumenta el indice por los nops agregados
             else:
-                j = i+1; #indice para siguiente instrucción
                 r1 = instructionTable[i][1]; #registro 1 de la instrucción
+                for j in range(i+1,i+4):
                 #mientras no se salga del rango de la lista, verifica hasta 3 instrucciones adelante
-                while(j < len(instructionTable) or j <= ((j+2)-len(instructionTable))):
-                    if(len(instructionTable[j]) <= 2): # se revisa que la siguiente instrucción no sea salto o etiqueta
-                        j = j+1;
+                    if (len(instructionTable) <= j):
+                        break;
                     else:
-                        r2 = instructionTable[j][2]; # segundo registro de la instrucción
-                        opcode = opCodeOptain(instructionTable[j][0]); #se obtiene el código de operacion para determinar si es branch
-                        if(opcode[0] == "BNE" or opcode[0] == "BEQ"):#revisa si son branches
-                             if(instructionTable[j][1] == r1 or r2 == r1): # si hay dependencia agrega NOPS para evitar el riesgo
-                                 agregaNop(instructionTable,i);#se agregan nops
-                                 i = i+3;
-                                 break;
-                             else:
-                                 j = j+1;
-                        elif(immediateList[opcode[1]] == 0):#No es inmediato
-                            r3 = instructionTable[j][3][:-1]; # se tiene el tercer registro de la instrucción
-                            if(r2 == r1 or r3 == r1):
-                                agregaNop(instructionTable,i);#se agregan nops
-                                i = i+3;
-                                break;
-                            else:
-                                j = j+1;
+                        if(len(instructionTable[j]) <= 2): # se revisa que la siguiente instrucción no sea salto o etiqueta
+                            j += 1;
                         else:
-                            if(r2 == r1):
-                                agregaNop(instructionTable,i);#se agregan nops
-                                i = i+3;
-                                break;
+                            r2 = instructionTable[j][2]; # segundo registro de la instrucción
+                            opcode = opCodeOptain(instructionTable[j][0]); #se obtiene el código de operacion para determinar si es branch
+                            if(opcode[0] == "BNE" or opcode[0] == "BEQ"):#revisa si son branches
+                                 if(instructionTable[j][1] == r1 or r2 == r1): # si hay dependencia agrega NOPS para evitar el riesgo
+                                     agregaNop(instructionTable,i);#se agregan nops
+                                     i = i+3;
+                                     break;
+                                 else:
+                                     j = j+1;
+                            elif(immediateList[opcode[1]] == 0):#No es inmediato
+                                r3 = instructionTable[j][3]#[:-1]; # se tiene el tercer registro de la instrucción
+                                if(r2 == r1 or r3 == r1):
+                                    agregaNop(instructionTable,i);#se agregan nops
+                                    i = i+3;
+                                    break;
+                                else:
+                                    j = j+1;
                             else:
-                                j = j+1;
+                                if(r2 == r1):
+                                    agregaNop(instructionTable,i);#se agregan nops
+                                    i = i+3;
+                                    break;
+                                else:
+                                    j = j+1;
                 i = i+1;
         else: #es una etiqueta, un salto o un NOP
             i = i+1;
-
 #############################################################
 #Agrega las instrucciones a una tabla para verificar riesgos
 
@@ -156,12 +163,16 @@ def agrega(instruction,line):
         return -1;
     else:
         instruction = instruction.split(";");
-        instruction = instruction[0].replace("\t","") # se eliminan los \t
+        instruction = instruction[0].replace("\t",""); # se eliminan los \t        
         instruction = instruction.replace(" ","").split(","); #se eliminan espacios en blanco y se separa en lista.
+        j = 0;
+        for i in instruction:
+            instruction[j] = i.replace("\n","");
+            j += 1;
+        
         if(instruction[0] == "" or instruction[0] == "\n"): # omite los \n y comentarios
             return 1;
-        
-        if(len(instruction) > 4):# error en la instruccion
+        if(len(instruction) > 4 or len(instruction) == 3):# error en la instruccion
             instructionTable.append(instruction)
             print("Error del código fuente en la línea: " + str(line))
             return -1;
@@ -182,27 +193,41 @@ def write(instructionTable,depth):
         print("BEGIN", file=archive);
         print(str(0) + " : " + nop, file=archive);
         cont = 1;
+        indice = 0;
         for i in instructionTable:
             if(i[0].upper() == "BNE" or i[0].upper() == "BEQ"):
                 label=etiqueta(i,3)
                 if (label != -1):
-                    print(str(hex(cont)[2:]) + " : " + binario(label), file=archive);
-                    cont = cont + 1;
+                    instructionTable[indice]=label
+                    indice += 1;
                 else:
                     return -1;
             elif (i[0].upper() == "J"):
                 label=etiqueta(i,1)
                 if (label != -1):
-                    print(str(hex(cont)[2:]) + " : " + binario(label), file=archive);
-                    cont = cont + 1;
+                    instructionTable[indice]=label
+                    indice += 1;
                 else:
                     return -1;
             else:
-                print(str(hex(cont)[2:]) + " : " + binario(i), file=archive);
+                indice += 1;
+        for i in instructionTable:
+            if (i[0].upper() == 'FIN'):
+                print(str(hex(cont)[2:]) + " : " + end, file=archive);
+                print(str(hex(cont)[2:]) + " : " + nop, file=archive);
                 cont = cont + 1;
+            elif (i[0] == 'NOP' or len(i) != 1):
+                test = binario(i);
+                if(test != -1):
+                    print(str(hex(cont)[2:]) + " : " + binario(i), file=archive);
+                    cont = cont + 1;
+                else:                    
+                    print("Error en el código fuente");
+                    return -1;
         while(cont < depth):
             print(str(hex(cont)[2:]) + " : " + nop, file=archive);
             cont = cont + 1;
+        print(str(hex(cont)[2:]) + " : " + end, file=archive);
         print("END;", file=archive);
 
 def read(source):
@@ -228,7 +253,7 @@ def texto(source):
     for i in listaTexto:
         j=len(i)
         ceros = ''
-        while(j < 8):
+        while(j < 7):
             ceros += "0"
             j = j + 1;
         listaTexto[indice] = ceros + i;
