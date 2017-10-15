@@ -1,0 +1,24 @@
+module InstructionMem(Direction,Clk,OpCode,RS,RT,RD,UsableInstruc);
+	input [31:0] Direction;
+	input Clk;
+  	output [5:0] OpCode;
+  	output [4:0] RS, RT, RD;
+	output [31:0] UsableInstruc;
+	reg [31:0] UsableInstruc;
+	 
+	 
+	initial begin
+		UsableInstruc=32'd0;
+	 end 
+	 
+	 always @ (I_RW or Instruc) begin
+        if (I_RW) begin
+            //UsableInstruc <=buscar segun direccion en el archivo hex ;
+        end
+    end
+    assign OpCode = UsableInstruc[31:26];
+    assign RS = UsableInstruc[25:21];
+    assign RT = UsableInstruc[20:16];
+    assign RD = UsableInstruc[15:11];
+
+endmodule

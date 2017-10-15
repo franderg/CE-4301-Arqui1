@@ -1,0 +1,37 @@
+module IF_ID(clk,Reset,Enable,Instruction,Rd,Rs,Rt,Opcode,INSTRUCTION,RD,RS,RT,OPCODE);
+	input wire clk, Reset, Enable;
+	input [31:0] Instruction;
+	input [2:0] Rd,Rs,Rt;
+	input [4:0] Opcode;
+	output [31:0] INSTRUCTION;
+	output [2:0] RD,RS,RT;
+	output [4:0] OPCODE;
+
+
+	initial begin
+		INSTRUCTION=32d'0;
+		RS=3d'0;
+		RD=3d'0;
+		RT=3d'0;
+		OPCODE=5d'0;
+	end
+
+	always @ (negedge clk) begin
+		if(Reset)begin
+			INSTRUCTION<=32d'0;
+			RS<=3d'0;
+			RD<=3d'0;
+			RT<=3d'0;
+			OPCODE<=5d'0;
+		end 
+		else if (Enable)begin
+			INSTRUCTION<=instruction;
+			RS<=Rs;
+			RD<=Rd;
+			RT<=Rt;
+			OPCODE<=Opcode;
+		end 
+	end	
+
+
+endmodule

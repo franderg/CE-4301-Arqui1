@@ -1,0 +1,25 @@
+module DataMemory(clk,Reset,MemoryAddress,memWD,menRD,DataOut,Datan);
+	output [31:0] DataOut;
+	input [31:0] MemoryAddress,DataIn;
+   	input menRD, memWD,Reset,clk;
+	 
+	 
+   	reg [31:0] Memory [0:1023];//poner tamaño que se va a tener para datos de 31 bits guardados
+
+	reg [31:0] DataOut;
+	
+	initial begin
+		DataOut=32'd0;
+    	end
+	
+	
+	always @ (MemoryAddress or memWD or menRD or DataIn)begin
+		if (menRD)begin
+			DataOut=Memory[MemoryAddress];
+		end
+		if (menWD)begin
+			Memory[MemoryAddress]=DataIN;
+		end  
+
+	end
+endmodule

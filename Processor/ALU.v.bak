@@ -1,0 +1,45 @@
+module ALU(A, B , SHAMT , ALUOp , ALUOut,ALUS);
+
+    output [31:0] ALUOut;
+    input [31:0] A, B;
+    input [5:0] ALUOp;
+	 input ALUS;
+	 
+	 parameter SUB = 6'd0;
+    parameter AND = 6'd1;
+    parameter OR  = 6'd2;
+	 parameter NOT = 6'd3; 
+	 parameter NAND = 6'd4; 
+	 parameter NOR = 6'd5;
+	 parameter XOR = 6'd6;  
+	 parameter XNOR = 6'd7;
+	 parameter DIV = 6'd8;
+	 parameter MUL = 6'd9;
+    parameter SLL = 6'd10;
+    parameter SRL = 6'd11;
+	 
+	 reg [31:0] ALUOut;
+	 
+	 initial begin
+	 ALUOut=31'd0;
+	 end
+	 
+    always @ (A or B or ALUOp or ALUS) begin
+		if (ALUS)begin
+			  case (ALUOp)
+					SUB: ALUOut = A-B;
+					AND: ALUOut = A&B;
+					OR:  ALUOut = A|B;
+					NOT: ALUOut = ~B;
+					NAND: ALUOut = ~(A&B);
+					NOR: ALUOut = ~(A|B);
+					XOR: ALUOut = A^B;
+					XNOR: ALUOut = ~(A^B);
+					DIV: ALUOut = A/B;
+					MUL: ALUOut = A*B;
+					SLL: ALUOut = B<<SHAMT;
+					SRL: ALUOut = B>>SHAMT;
+			  endcase
+		end
+    end
+endmodule

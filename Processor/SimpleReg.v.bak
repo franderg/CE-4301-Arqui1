@@ -1,0 +1,18 @@
+module SimpleReg(clk,Reset,DataIn,DataOut);
+
+	input [31:0] DataIn;
+	input clk,Reset;
+	output reg [31:0] DataOut;
+
+	initial begin
+	DataOut = 0;
+	end
+
+	always @ (posedge clk)
+	begin
+		if(Reset)
+			DataOut <= 0;
+		else
+			DataOut <= DataIn;
+	end	
+endmodule

@@ -1,0 +1,3 @@
+module MIPS(clk,Reset);
+
+endmodule

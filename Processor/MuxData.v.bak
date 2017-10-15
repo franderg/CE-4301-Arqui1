@@ -1,0 +1,14 @@
+module MuxData(Output, Input0, Input1,Selector);
+    output [31:0] Output;
+    input [31:0] Input0, Input1;
+    input [1:0] Selector;
+    reg [31:0] Output;
+	 
+    always @ (Input0 or Input1 or Selector) begin
+        case (Selector)
+            0: Output = Input0;
+            1: Output = Input1;
+				default:Output =3'd0;
+        endcase
+    end
+endmodule

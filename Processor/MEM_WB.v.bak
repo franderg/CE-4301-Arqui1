@@ -1,0 +1,18 @@
+module MEM_WB(clk,Reset,Enable);
+	input wire clk, Reset, Enable;
+
+
+	initial begin
+	end
+
+	always @ (negedge clk) begin
+		if(Reset)begin
+
+		end 
+		else if (Enable)begin
+			
+		end 
+	end	
+
+
+endmodule

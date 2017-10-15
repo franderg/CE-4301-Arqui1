@@ -1,0 +1,27 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate /home/ferllini13/Desktop/CE-4301-Arqui1/Processor/Qsys.qsys --block-symbol-file --output-directory=/home/ferllini13/Desktop/CE-4301-Arqui1/Processor/Qsys --family="Cyclone V" --part=5CGXFC7C7F23C8
+Progress: Loading Processor/Qsys.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 16.1]
+Progress: Parameterizing module clk_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate /home/ferllini13/Desktop/CE-4301-Arqui1/Processor/Qsys.qsys --synthesis=VERILOG --output-directory=/home/ferllini13/Desktop/CE-4301-Arqui1/Processor/Qsys/synthesis --family="Cyclone V" --part=5CGXFC7C7F23C8
+Progress: Loading Processor/Qsys.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 16.1]
+Progress: Parameterizing module clk_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: Qsys: Generating Qsys "Qsys" for QUARTUS_SYNTH
+Info: Qsys: Done "Qsys" with 1 modules, 1 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
