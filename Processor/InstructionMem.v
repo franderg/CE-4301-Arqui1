@@ -12,7 +12,7 @@ module InstructionMem(Pc,clk,OpCode,RS,RT,RD,IMM,JADDR,UsableInstruc,NEWPC);
 	 
 	 
 	reg [0:0] ended; 
-	//reg [31:0] mem [0:19];
+	reg [31:0] mem [0:19];
 	 
 	initial begin
 		ended=1'd0;
@@ -24,7 +24,7 @@ module InstructionMem(Pc,clk,OpCode,RS,RT,RD,IMM,JADDR,UsableInstruc,NEWPC);
 		IMM =17'd0;
 		JADDR =31'd0;
 
-		/*
+		
 		mem[0]=32'b11111000000000000000000000000000; //NOP
 		mem[1]=32'b00010000010000100000000000000001; //ADDI R1,R1,1
 		mem[2]=32'b00010000100001000000000000000011; //ADDI R2,R2,3
@@ -49,23 +49,23 @@ module InstructionMem(Pc,clk,OpCode,RS,RT,RD,IMM,JADDR,UsableInstruc,NEWPC);
 	end 
 	
 	
-	 wire [31:0] instruction;
-	 rom rom1(
-		.address(Pc),
-		.clock(clk),
-		.q(instruction)
-	);
+//	 wire [31:0] instruction;
+//	 rom rom1(
+//		.address(Pc),
+//		.clock(clk),
+//		.q(instruction)
+//	);
 	
-	always @ (Pc or ended or instruction) begin
-		UsableInstruc=instruction;
-	  //  if (ended) UsableInstruc=32'b11111000000000000000000000000000;
-		//else if (mem[Pc]==32'b11111111111111111111111111111111) ended=1'd1;
+	always @ (Pc or ended or UsableInstruc) begin
+		//UsableInstruc=instruction;
+		if (ended) UsableInstruc=32'b11111000000000000000000000000000;
+		else if (mem[Pc]==32'b11111111111111111111111111111111) ended=1'd1;
 		
-		//else UsableInstruc=mem[Pc];
+		else UsableInstruc=mem[Pc];
 		
 		
-		if (ended) UsableInstruc=32'b1111100000000000000000000000000;
-		else if (UsableInstruc==32'b11111111111111111111111111111111) ended=1'd1;
+		//if (ended) UsableInstruc=32'b1111100000000000000000000000000;
+		//else if (UsableInstruc==32'b11111111111111111111111111111111) ended=1'd1;
 		
 		OpCode = UsableInstruc[31:27];
 		RS = UsableInstruc[21:17];

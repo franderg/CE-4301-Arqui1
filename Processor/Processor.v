@@ -137,7 +137,7 @@ module Processor(clk,Reset,seven);
 	
 	sevenSeg ss(.R(r),.Seg(seven1));
 	
-	assign seven =seven1;
+	assign seven = opcode;
 	
 	RegisterBanc regbank(
 		.ReadData1(rdata1),
