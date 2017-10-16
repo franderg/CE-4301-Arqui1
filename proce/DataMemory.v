@@ -20,10 +20,12 @@ module DataMemory(clk,Reset,MemoryAddress,memWD,memRD,DataOut,DataIn);
 	
 	always @ (posedge clk)begin
 		if (memRD)begin
-			DataOut=Memory[MemoryAddress];
+			DataOut[6:0]=Memory[MemoryAddress];
+			DataOut[31:7]=25'd0;
 		end
 		else if (memWD)begin
 			Memory[MemoryAddress]=DataIn;
+			DataOut=32'd0;
 		end
 		else  DataOut=MemoryAddress;
 

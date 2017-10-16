@@ -1,5 +1,5 @@
 Assembler report for proc
-Mon Oct 16 12:02:03 2017
+Mon Oct 16 15:14:20 2017
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Mon Oct 16 12:02:03 2017 ;
+; Assembler Status      ; Successful - Mon Oct 16 15:14:20 2017 ;
 ; Revision Name         ; proc                                  ;
 ; Top-level Entity Name ; Processor                             ;
 ; Family                ; Cyclone V                             ;
@@ -67,8 +67,8 @@ agreement for further details.
 +----------------+-------------------+
 ; Option         ; Setting           ;
 +----------------+-------------------+
-; JTAG usercode  ; 0x017D2392        ;
-; Checksum       ; 0x017D2392        ;
+; JTAG usercode  ; 0x01680110        ;
+; Checksum       ; 0x01680110        ;
 +----------------+-------------------+
 
 
@@ -78,12 +78,12 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Mon Oct 16 12:01:51 2017
+    Info: Processing started: Mon Oct 16 15:14:08 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off proc -c proc
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 1008 megabytes
-    Info: Processing ended: Mon Oct 16 12:02:03 2017
+    Info: Peak virtual memory: 988 megabytes
+    Info: Processing ended: Mon Oct 16 15:14:20 2017
     Info: Elapsed time: 00:00:12
     Info: Total CPU time (on all processors): 00:00:12
 

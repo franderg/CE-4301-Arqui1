@@ -1,5 +1,5 @@
 Analysis & Synthesis report for proc
-Mon Oct 16 11:59:59 2017
+Mon Oct 16 15:12:18 2017
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -16,15 +16,15 @@ Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis DSP Block Usage Summary
  10. Registers Removed During Synthesis
- 11. General Register Statistics
- 12. Inverted Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Source assignments for DataMemory:datamen|altsyncram:Memory_rtl_0|altsyncram_h3o1:auto_generated
- 15. Parameter Settings for User Entity Instance: ControlUnit:ctrlunit
- 16. Parameter Settings for User Entity Instance: ALU:alu
- 17. Parameter Settings for Inferred Entity Instance: DataMemory:datamen|altsyncram:Memory_rtl_0
- 18. altsyncram Parameter Settings by Entity Instance
- 19. Port Connectivity Checks: "RegisterBanc:regbank"
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for DataMemory:datamen|altsyncram:Memory_rtl_0|altsyncram_h3o1:auto_generated
+ 16. Parameter Settings for User Entity Instance: ControlUnit:ctrlunit
+ 17. Parameter Settings for User Entity Instance: ALU:alu
+ 18. Parameter Settings for Inferred Entity Instance: DataMemory:datamen|altsyncram:Memory_rtl_0
+ 19. altsyncram Parameter Settings by Entity Instance
  20. Port Connectivity Checks: "IF_ID:ifid"
  21. Post-Synthesis Netlist Statistics for Top Partition
  22. Elapsed Time Per Partition
@@ -56,14 +56,14 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Oct 16 11:59:59 2017       ;
+; Analysis & Synthesis Status     ; Successful - Mon Oct 16 15:12:18 2017       ;
 ; Quartus Prime Version           ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; proc                                        ;
 ; Top-level Entity Name           ; Processor                                   ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 1329                                        ;
-; Total pins                      ; 136                                         ;
+; Total registers                 ; 492                                         ;
+; Total pins                      ; 269                                         ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 422,443                                     ;
 ; Total DSP Blocks                ; 2                                           ;
@@ -224,27 +224,27 @@ agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimate of Logic utilization (ALMs needed) ; 1241      ;
+; Estimate of Logic utilization (ALMs needed) ; 579       ;
 ;                                             ;           ;
-; Combinational ALUT usage for logic          ; 1368      ;
-;     -- 7 input functions                    ; 13        ;
-;     -- 6 input functions                    ; 862       ;
-;     -- 5 input functions                    ; 198       ;
-;     -- 4 input functions                    ; 127       ;
-;     -- <=3 input functions                  ; 168       ;
+; Combinational ALUT usage for logic          ; 762       ;
+;     -- 7 input functions                    ; 3         ;
+;     -- 6 input functions                    ; 352       ;
+;     -- 5 input functions                    ; 98        ;
+;     -- 4 input functions                    ; 67        ;
+;     -- <=3 input functions                  ; 242       ;
 ;                                             ;           ;
-; Dedicated logic registers                   ; 1329      ;
+; Dedicated logic registers                   ; 492       ;
 ;                                             ;           ;
-; I/O pins                                    ; 136       ;
+; I/O pins                                    ; 269       ;
 ; Total MLAB memory bits                      ; 0         ;
 ; Total block memory bits                     ; 422443    ;
 ;                                             ;           ;
 ; Total DSP Blocks                            ; 2         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 1385      ;
-; Total fan-out                               ; 13321     ;
-; Average fan-out                             ; 4.40      ;
+; Maximum fan-out                             ; 548       ;
+; Total fan-out                               ; 7239      ;
+; Average fan-out                             ; 3.91      ;
 +---------------------------------------------+-----------+
 
 
@@ -253,8 +253,8 @@ agreement for further details.
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                           ; Entity Name     ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |Processor                                ; 1368 (3)            ; 1329 (4)                  ; 422443            ; 2          ; 136  ; 0            ; |Processor                                                                                                    ; Processor       ; work         ;
-;    |ALU:alu|                              ; 235 (235)           ; 0 (0)                     ; 0                 ; 2          ; 0    ; 0            ; |Processor|ALU:alu                                                                                            ; ALU             ; work         ;
+; |Processor                                ; 762 (0)             ; 492 (0)                   ; 422443            ; 2          ; 269  ; 0            ; |Processor                                                                                                    ; Processor       ; work         ;
+;    |ALU:alu|                              ; 424 (424)           ; 0 (0)                     ; 0                 ; 2          ; 0    ; 0            ; |Processor|ALU:alu                                                                                            ; ALU             ; work         ;
 ;    |ControlUnit:ctrlunit|                 ; 9 (9)               ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |Processor|ControlUnit:ctrlunit                                                                               ; ControlUnit     ; work         ;
 ;    |DataMemory:datamen|                   ; 38 (8)              ; 35 (32)                   ; 422443            ; 0          ; 0    ; 0            ; |Processor|DataMemory:datamen                                                                                 ; DataMemory      ; work         ;
 ;       |altsyncram:Memory_rtl_0|           ; 30 (0)              ; 3 (0)                     ; 422443            ; 0          ; 0    ; 0            ; |Processor|DataMemory:datamen|altsyncram:Memory_rtl_0                                                         ; altsyncram      ; work         ;
@@ -262,16 +262,16 @@ agreement for further details.
 ;             |decode_61a:rden_decode_b|    ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Processor|DataMemory:datamen|altsyncram:Memory_rtl_0|altsyncram_h3o1:auto_generated|decode_61a:rden_decode_b ; decode_61a      ; work         ;
 ;             |decode_dla:decode2|          ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Processor|DataMemory:datamen|altsyncram:Memory_rtl_0|altsyncram_h3o1:auto_generated|decode_dla:decode2       ; decode_dla      ; work         ;
 ;             |mux_sfb:mux3|                ; 14 (14)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Processor|DataMemory:datamen|altsyncram:Memory_rtl_0|altsyncram_h3o1:auto_generated|mux_sfb:mux3             ; mux_sfb         ; work         ;
-;    |EX_MEM:exmen|                         ; 195 (195)           ; 47 (47)                   ; 0                 ; 0          ; 0    ; 0            ; |Processor|EX_MEM:exmen                                                                                       ; EX_MEM          ; work         ;
-;    |ID_Ex:idex|                           ; 711 (711)           ; 95 (95)                   ; 0                 ; 0          ; 0    ; 0            ; |Processor|ID_Ex:idex                                                                                         ; ID_Ex           ; work         ;
-;    |IF_ID:ifid|                           ; 5 (5)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |Processor|IF_ID:ifid                                                                                         ; IF_ID           ; work         ;
-;    |InstructionMem:insmem|                ; 98 (98)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |Processor|InstructionMem:insmem                                                                              ; InstructionMem  ; work         ;
-;    |MEM_WB:menwb|                         ; 0 (0)               ; 38 (38)                   ; 0                 ; 0          ; 0    ; 0            ; |Processor|MEM_WB:menwb                                                                                       ; MEM_WB          ; work         ;
+;    |EX_MEM:exmen|                         ; 16 (16)             ; 45 (45)                   ; 0                 ; 0          ; 0    ; 0            ; |Processor|EX_MEM:exmen                                                                                       ; EX_MEM          ; work         ;
+;    |ID_Ex:idex|                           ; 197 (197)           ; 80 (80)                   ; 0                 ; 0          ; 0    ; 0            ; |Processor|ID_Ex:idex                                                                                         ; ID_Ex           ; work         ;
+;    |IF_ID:ifid|                           ; 4 (4)               ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |Processor|IF_ID:ifid                                                                                         ; IF_ID           ; work         ;
+;    |InstructionMem:insmem|                ; 21 (21)             ; 13 (13)                   ; 0                 ; 0          ; 0    ; 0            ; |Processor|InstructionMem:insmem                                                                              ; InstructionMem  ; work         ;
+;    |MEM_WB:menwb|                         ; 0 (0)               ; 36 (36)                   ; 0                 ; 0          ; 0    ; 0            ; |Processor|MEM_WB:menwb                                                                                       ; MEM_WB          ; work         ;
 ;    |MuxData:alumuxB|                      ; 32 (32)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Processor|MuxData:alumuxB                                                                                    ; MuxData         ; work         ;
-;    |MuxReg:reg1|                          ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Processor|MuxReg:reg1                                                                                        ; MuxReg          ; work         ;
-;    |MuxReg:reg2|                          ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Processor|MuxReg:reg2                                                                                        ; MuxReg          ; work         ;
-;    |RegisterBanc:regbank|                 ; 32 (32)             ; 1024 (1024)               ; 0                 ; 0          ; 0    ; 0            ; |Processor|RegisterBanc:regbank                                                                               ; RegisterBanc    ; work         ;
-;    |SimpleReg:pcreg|                      ; 0 (0)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |Processor|SimpleReg:pcreg                                                                                    ; SimpleReg       ; work         ;
+;    |MuxReg:reg1|                          ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Processor|MuxReg:reg1                                                                                        ; MuxReg          ; work         ;
+;    |MuxReg:reg2|                          ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Processor|MuxReg:reg2                                                                                        ; MuxReg          ; work         ;
+;    |RegisterBanc:regbank|                 ; 8 (8)               ; 256 (256)                 ; 0                 ; 0          ; 0    ; 0            ; |Processor|RegisterBanc:regbank                                                                               ; RegisterBanc    ; work         ;
+;    |SimpleReg:pcreg|                      ; 7 (7)               ; 7 (7)                     ; 0                 ; 0          ; 0    ; 0            ; |Processor|SimpleReg:pcreg                                                                                    ; SimpleReg       ; work         ;
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -304,11 +304,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Register name                             ; Reason for Removal                          ;
 +-------------------------------------------+---------------------------------------------+
 ; ID_Ex:idex|IMMVALUE[17..31]               ; Merged with ID_Ex:idex|IMMVALUE[16]         ;
-; IF_ID:ifid|RT[0]                          ; Merged with IF_ID:ifid|IMM[12]              ;
-; IF_ID:ifid|RT[1]                          ; Merged with IF_ID:ifid|IMM[13]              ;
-; IF_ID:ifid|RT[2]                          ; Merged with IF_ID:ifid|IMM[14]              ;
-; IF_ID:ifid|RT[3]                          ; Merged with IF_ID:ifid|IMM[15]              ;
 ; IF_ID:ifid|RT[4]                          ; Merged with IF_ID:ifid|IMM[16]              ;
+; IF_ID:ifid|RT[3]                          ; Merged with IF_ID:ifid|IMM[15]              ;
+; IF_ID:ifid|RT[2]                          ; Merged with IF_ID:ifid|IMM[14]              ;
+; IF_ID:ifid|RT[1]                          ; Merged with IF_ID:ifid|IMM[13]              ;
+; IF_ID:ifid|RT[0]                          ; Merged with IF_ID:ifid|IMM[12]              ;
 ; InstructionMem:insmem|mem~0               ; Stuck at GND due to stuck port clock        ;
 ; InstructionMem:insmem|mem~1               ; Stuck at GND due to stuck port clock        ;
 ; InstructionMem:insmem|mem~2               ; Stuck at GND due to stuck port clock        ;
@@ -4405,14 +4405,1228 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; InstructionMem:insmem|mem~4093            ; Stuck at GND due to stuck port clock        ;
 ; InstructionMem:insmem|mem~4094            ; Stuck at GND due to stuck port clock        ;
 ; InstructionMem:insmem|mem~4095            ; Stuck at GND due to stuck port clock        ;
-; move_cont[3..5]                           ; Lost fanout                                 ;
-; InstructionMem:insmem|IMM[3]              ; Merged with InstructionMem:insmem|IMM[2]    ;
-; InstructionMem:insmem|IMM[6..11,14..16]   ; Merged with InstructionMem:insmem|IMM[5]    ;
-; InstructionMem:insmem|JADDR[19..21,25,26] ; Merged with InstructionMem:insmem|IMM[5]    ;
-; InstructionMem:insmem|JADDR[24]           ; Merged with InstructionMem:insmem|IMM[12]   ;
-; InstructionMem:insmem|JADDR[22]           ; Merged with InstructionMem:insmem|JADDR[17] ;
-; Total Number of Removed Registers = 4136  ;                                             ;
+; InstructionMem:insmem|IMM[2..11,14..16]   ; Stuck at GND due to stuck port data_in      ;
+; InstructionMem:insmem|JADDR[19..21,25,26] ; Stuck at GND due to stuck port data_in      ;
+; IF_ID:ifid|RD[3,4]                        ; Stuck at GND due to stuck port data_in      ;
+; IF_ID:ifid|RS[2..4]                       ; Stuck at GND due to stuck port data_in      ;
+; IF_ID:ifid|IMM[2..11,14..16]              ; Stuck at GND due to stuck port data_in      ;
+; ID_Ex:idex|RD[3,4]                        ; Stuck at GND due to stuck port data_in      ;
+; ID_Ex:idex|IMMVALUE[2..11,14..16]         ; Stuck at GND due to stuck port data_in      ;
+; InstructionMem:insmem|ended[0]            ; Stuck at GND due to stuck port clock_enable ;
+; EX_MEM:exmen|WRITEADDRESS[3,4]            ; Stuck at GND due to stuck port data_in      ;
+; MEM_WB:menwb|WRITEADDRESS[3,4]            ; Stuck at GND due to stuck port data_in      ;
+; RegisterBanc:regbank|Register[12][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][31]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][31]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][31]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][30]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][30]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][30]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][29]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][29]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][29]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][28]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][28]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][28]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][27]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][27]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][27]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][26]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][26]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][26]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][25]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][25]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][25]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][24]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][24]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][24]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][23]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][23]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][23]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][22]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][22]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][22]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][21]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][21]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][21]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][20]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][20]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][20]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][19]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][19]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][19]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][18]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][18]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][18]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][17]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][17]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][17]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][16]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][16]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][16]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][15]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][15]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][15]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][14]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][14]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][14]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][13]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][13]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][13]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][12]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][12]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][12]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][11]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][11]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][11]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][10]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][10]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][10]     ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][9]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][9]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][9]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][8]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][8]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][8]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][7]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][7]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][7]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][6]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][6]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][6]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][5]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][5]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][5]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][4]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][4]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][4]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][3]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][3]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][3]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][2]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][2]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][2]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][1]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][1]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][1]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[12][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[13][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[14][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[15][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[16][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[17][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[18][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[19][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[20][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[21][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[22][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[23][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[24][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[25][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[26][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[27][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[28][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[29][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[30][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[31][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[8][0]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[9][0]       ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[10][0]      ; Stuck at GND due to stuck port clock_enable ;
+; RegisterBanc:regbank|Register[11][0]      ; Stuck at GND due to stuck port clock_enable ;
+; InstructionMem:insmem|OpCode[4]           ; Merged with InstructionMem:insmem|OpCode[0] ;
+; SimpleReg:pcreg|DataOut[7..31]            ; Lost fanout                                 ;
+; Total Number of Removed Registers = 4966  ;                                             ;
 +-------------------------------------------+---------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                   ;
++------------------------------+-------------------------+--------------------------------------------------------------------------------------+
+; Register name                ; Reason for Removal      ; Registers Removed due to This Register                                               ;
++------------------------------+-------------------------+--------------------------------------------------------------------------------------+
+; InstructionMem:insmem|mem~16 ; Stuck at GND            ; InstructionMem:insmem|IMM[16], IF_ID:ifid|IMM[16], ID_Ex:idex|IMMVALUE[16],          ;
+;                              ; due to stuck port clock ; MEM_WB:menwb|WRITEADDRESS[3], MEM_WB:menwb|WRITEADDRESS[4],                          ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][31], RegisterBanc:regbank|Register[13][31],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][31], RegisterBanc:regbank|Register[15][31],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][31], RegisterBanc:regbank|Register[17][31],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][31], RegisterBanc:regbank|Register[19][31],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][31], RegisterBanc:regbank|Register[21][31],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][31], RegisterBanc:regbank|Register[23][31],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][31], RegisterBanc:regbank|Register[25][31],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][31], RegisterBanc:regbank|Register[27][31],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][31], RegisterBanc:regbank|Register[29][31],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][31], RegisterBanc:regbank|Register[31][31],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][31], RegisterBanc:regbank|Register[9][31],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][31], RegisterBanc:regbank|Register[11][31],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][30], RegisterBanc:regbank|Register[13][30],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][30], RegisterBanc:regbank|Register[15][30],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][30], RegisterBanc:regbank|Register[17][30],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][30], RegisterBanc:regbank|Register[19][30],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][30], RegisterBanc:regbank|Register[21][30],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][30], RegisterBanc:regbank|Register[23][30],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][30], RegisterBanc:regbank|Register[25][30],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][30], RegisterBanc:regbank|Register[27][30],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][30], RegisterBanc:regbank|Register[29][30],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][30], RegisterBanc:regbank|Register[31][30],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][30], RegisterBanc:regbank|Register[9][30],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][30], RegisterBanc:regbank|Register[11][30],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][29], RegisterBanc:regbank|Register[13][29],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][29], RegisterBanc:regbank|Register[15][29],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][29], RegisterBanc:regbank|Register[17][29],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][29], RegisterBanc:regbank|Register[19][29],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][29], RegisterBanc:regbank|Register[21][29],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][29], RegisterBanc:regbank|Register[23][29],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][29], RegisterBanc:regbank|Register[25][29],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][29], RegisterBanc:regbank|Register[27][29],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][29], RegisterBanc:regbank|Register[29][29],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][29], RegisterBanc:regbank|Register[31][29],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][29], RegisterBanc:regbank|Register[9][29],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][29], RegisterBanc:regbank|Register[11][29],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][28], RegisterBanc:regbank|Register[13][28],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][28], RegisterBanc:regbank|Register[15][28],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][28], RegisterBanc:regbank|Register[17][28],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][28], RegisterBanc:regbank|Register[19][28],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][28], RegisterBanc:regbank|Register[21][28],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][28], RegisterBanc:regbank|Register[23][28],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][28], RegisterBanc:regbank|Register[25][28],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][28], RegisterBanc:regbank|Register[27][28],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][28], RegisterBanc:regbank|Register[29][28],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][28], RegisterBanc:regbank|Register[31][28],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][28], RegisterBanc:regbank|Register[9][28],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][28], RegisterBanc:regbank|Register[11][28],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][27], RegisterBanc:regbank|Register[13][27],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][27], RegisterBanc:regbank|Register[15][27],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][27], RegisterBanc:regbank|Register[17][27],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][27], RegisterBanc:regbank|Register[19][27],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][27], RegisterBanc:regbank|Register[21][27],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][27], RegisterBanc:regbank|Register[23][27],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][27], RegisterBanc:regbank|Register[25][27],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][27], RegisterBanc:regbank|Register[27][27],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][27], RegisterBanc:regbank|Register[29][27],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][27], RegisterBanc:regbank|Register[31][27],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][27], RegisterBanc:regbank|Register[9][27],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][27], RegisterBanc:regbank|Register[11][27],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][26], RegisterBanc:regbank|Register[13][26],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][26], RegisterBanc:regbank|Register[15][26],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][26], RegisterBanc:regbank|Register[17][26],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][26], RegisterBanc:regbank|Register[19][26],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][26], RegisterBanc:regbank|Register[21][26],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][26], RegisterBanc:regbank|Register[23][26],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][26], RegisterBanc:regbank|Register[25][26],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][26], RegisterBanc:regbank|Register[27][26],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][26], RegisterBanc:regbank|Register[29][26],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][26], RegisterBanc:regbank|Register[31][26],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][26], RegisterBanc:regbank|Register[9][26],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][26], RegisterBanc:regbank|Register[11][26],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][25], RegisterBanc:regbank|Register[13][25],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][25], RegisterBanc:regbank|Register[15][25],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][25], RegisterBanc:regbank|Register[17][25],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][25], RegisterBanc:regbank|Register[19][25],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][25], RegisterBanc:regbank|Register[21][25],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][25], RegisterBanc:regbank|Register[23][25],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][25], RegisterBanc:regbank|Register[25][25],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][25], RegisterBanc:regbank|Register[27][25],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][25], RegisterBanc:regbank|Register[29][25],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][25], RegisterBanc:regbank|Register[31][25],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][25], RegisterBanc:regbank|Register[9][25],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][25], RegisterBanc:regbank|Register[11][25],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][24], RegisterBanc:regbank|Register[13][24],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][24], RegisterBanc:regbank|Register[15][24],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][24], RegisterBanc:regbank|Register[17][24],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][24], RegisterBanc:regbank|Register[19][24],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][24], RegisterBanc:regbank|Register[21][24],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][24], RegisterBanc:regbank|Register[23][24],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][24], RegisterBanc:regbank|Register[25][24],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][24], RegisterBanc:regbank|Register[27][24],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][24], RegisterBanc:regbank|Register[29][24],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][24], RegisterBanc:regbank|Register[31][24],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][24], RegisterBanc:regbank|Register[9][24],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][24], RegisterBanc:regbank|Register[11][24],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][23], RegisterBanc:regbank|Register[13][23],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][23], RegisterBanc:regbank|Register[15][23],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][23], RegisterBanc:regbank|Register[17][23],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][23], RegisterBanc:regbank|Register[19][23],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][23], RegisterBanc:regbank|Register[21][23],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][23], RegisterBanc:regbank|Register[23][23],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][23], RegisterBanc:regbank|Register[25][23],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][23], RegisterBanc:regbank|Register[27][23],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][23], RegisterBanc:regbank|Register[29][23],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][23], RegisterBanc:regbank|Register[31][23],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][23], RegisterBanc:regbank|Register[9][23],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][23], RegisterBanc:regbank|Register[11][23],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][22], RegisterBanc:regbank|Register[13][22],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][22], RegisterBanc:regbank|Register[15][22],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][22], RegisterBanc:regbank|Register[17][22],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][22], RegisterBanc:regbank|Register[19][22],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][22], RegisterBanc:regbank|Register[21][22],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][22], RegisterBanc:regbank|Register[23][22],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][22], RegisterBanc:regbank|Register[25][22],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][22], RegisterBanc:regbank|Register[27][22],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][22], RegisterBanc:regbank|Register[29][22],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][22], RegisterBanc:regbank|Register[31][22],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][22], RegisterBanc:regbank|Register[9][22],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][22], RegisterBanc:regbank|Register[11][22],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][21], RegisterBanc:regbank|Register[13][21],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][21], RegisterBanc:regbank|Register[15][21],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][21], RegisterBanc:regbank|Register[17][21],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][21], RegisterBanc:regbank|Register[19][21],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][21], RegisterBanc:regbank|Register[21][21],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][21], RegisterBanc:regbank|Register[23][21],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][21], RegisterBanc:regbank|Register[25][21],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][21], RegisterBanc:regbank|Register[27][21],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][21], RegisterBanc:regbank|Register[29][21],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][21], RegisterBanc:regbank|Register[31][21],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][21], RegisterBanc:regbank|Register[9][21],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][21], RegisterBanc:regbank|Register[11][21],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][20], RegisterBanc:regbank|Register[13][20],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][20], RegisterBanc:regbank|Register[15][20],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][20], RegisterBanc:regbank|Register[17][20],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][20], RegisterBanc:regbank|Register[19][20],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][20], RegisterBanc:regbank|Register[21][20],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][20], RegisterBanc:regbank|Register[23][20],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][20], RegisterBanc:regbank|Register[25][20],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][20], RegisterBanc:regbank|Register[27][20],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][20], RegisterBanc:regbank|Register[29][20],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][20], RegisterBanc:regbank|Register[31][20],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][20], RegisterBanc:regbank|Register[9][20],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][20], RegisterBanc:regbank|Register[11][20],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][19], RegisterBanc:regbank|Register[13][19],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][19], RegisterBanc:regbank|Register[15][19],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][19], RegisterBanc:regbank|Register[17][19],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][19], RegisterBanc:regbank|Register[19][19],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][19], RegisterBanc:regbank|Register[21][19],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][19], RegisterBanc:regbank|Register[23][19],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][19], RegisterBanc:regbank|Register[25][19],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][19], RegisterBanc:regbank|Register[27][19],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][19], RegisterBanc:regbank|Register[29][19],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][19], RegisterBanc:regbank|Register[31][19],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][19], RegisterBanc:regbank|Register[9][19],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][19], RegisterBanc:regbank|Register[11][19],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][18], RegisterBanc:regbank|Register[13][18],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][18], RegisterBanc:regbank|Register[15][18],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][18], RegisterBanc:regbank|Register[17][18],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][18], RegisterBanc:regbank|Register[19][18],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][18], RegisterBanc:regbank|Register[21][18],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][18], RegisterBanc:regbank|Register[23][18],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][18], RegisterBanc:regbank|Register[25][18],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][18], RegisterBanc:regbank|Register[27][18],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][18], RegisterBanc:regbank|Register[29][18],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][18], RegisterBanc:regbank|Register[31][18],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][18], RegisterBanc:regbank|Register[9][18],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][18], RegisterBanc:regbank|Register[11][18],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][17], RegisterBanc:regbank|Register[13][17],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][17], RegisterBanc:regbank|Register[15][17],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][17], RegisterBanc:regbank|Register[17][17],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][17], RegisterBanc:regbank|Register[19][17],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][17], RegisterBanc:regbank|Register[21][17],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][17], RegisterBanc:regbank|Register[23][17],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][17], RegisterBanc:regbank|Register[25][17],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][17], RegisterBanc:regbank|Register[27][17],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][17], RegisterBanc:regbank|Register[29][17],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][17], RegisterBanc:regbank|Register[31][17],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][17], RegisterBanc:regbank|Register[9][17],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][17], RegisterBanc:regbank|Register[11][17],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][16], RegisterBanc:regbank|Register[13][16],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][16], RegisterBanc:regbank|Register[15][16],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][16], RegisterBanc:regbank|Register[17][16],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][16], RegisterBanc:regbank|Register[19][16],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][16], RegisterBanc:regbank|Register[21][16],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][16], RegisterBanc:regbank|Register[23][16],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][16], RegisterBanc:regbank|Register[25][16],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][16], RegisterBanc:regbank|Register[27][16],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][16], RegisterBanc:regbank|Register[29][16],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][16], RegisterBanc:regbank|Register[31][16],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][16], RegisterBanc:regbank|Register[9][16],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][16], RegisterBanc:regbank|Register[11][16],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][15], RegisterBanc:regbank|Register[13][15],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][15], RegisterBanc:regbank|Register[15][15],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][15], RegisterBanc:regbank|Register[17][15],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][15], RegisterBanc:regbank|Register[19][15],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][15], RegisterBanc:regbank|Register[21][15],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][15], RegisterBanc:regbank|Register[23][15],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][15], RegisterBanc:regbank|Register[25][15],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][15], RegisterBanc:regbank|Register[27][15],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][15], RegisterBanc:regbank|Register[29][15],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][15], RegisterBanc:regbank|Register[31][15],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][15], RegisterBanc:regbank|Register[9][15],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][15], RegisterBanc:regbank|Register[11][15],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][14], RegisterBanc:regbank|Register[13][14],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][14], RegisterBanc:regbank|Register[15][14],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][14], RegisterBanc:regbank|Register[17][14],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][14], RegisterBanc:regbank|Register[19][14],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][14], RegisterBanc:regbank|Register[21][14],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][14], RegisterBanc:regbank|Register[23][14],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][14], RegisterBanc:regbank|Register[25][14],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][14], RegisterBanc:regbank|Register[27][14],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][14], RegisterBanc:regbank|Register[29][14],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][14], RegisterBanc:regbank|Register[31][14],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][14], RegisterBanc:regbank|Register[9][14],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][14], RegisterBanc:regbank|Register[11][14],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][13], RegisterBanc:regbank|Register[13][13],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][13], RegisterBanc:regbank|Register[15][13],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][13], RegisterBanc:regbank|Register[17][13],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][13], RegisterBanc:regbank|Register[19][13],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][13], RegisterBanc:regbank|Register[21][13],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][13], RegisterBanc:regbank|Register[23][13],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][13], RegisterBanc:regbank|Register[25][13],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][13], RegisterBanc:regbank|Register[27][13],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][13], RegisterBanc:regbank|Register[29][13],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][13], RegisterBanc:regbank|Register[31][13],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][13], RegisterBanc:regbank|Register[9][13],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][13], RegisterBanc:regbank|Register[11][13],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][12], RegisterBanc:regbank|Register[13][12],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][12], RegisterBanc:regbank|Register[15][12],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][12], RegisterBanc:regbank|Register[17][12],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][12], RegisterBanc:regbank|Register[19][12],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][12], RegisterBanc:regbank|Register[21][12],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][12], RegisterBanc:regbank|Register[23][12],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][12], RegisterBanc:regbank|Register[25][12],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][12], RegisterBanc:regbank|Register[27][12],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][12], RegisterBanc:regbank|Register[29][12],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][12], RegisterBanc:regbank|Register[31][12],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][12], RegisterBanc:regbank|Register[9][12],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][12], RegisterBanc:regbank|Register[11][12],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][11], RegisterBanc:regbank|Register[13][11],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][11], RegisterBanc:regbank|Register[15][11],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][11], RegisterBanc:regbank|Register[17][11],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][11], RegisterBanc:regbank|Register[19][11],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][11], RegisterBanc:regbank|Register[21][11],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][11], RegisterBanc:regbank|Register[23][11],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][11], RegisterBanc:regbank|Register[25][11],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][11], RegisterBanc:regbank|Register[27][11],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][11], RegisterBanc:regbank|Register[29][11],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][11], RegisterBanc:regbank|Register[31][11],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][11], RegisterBanc:regbank|Register[9][11],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][11], RegisterBanc:regbank|Register[11][11],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][10], RegisterBanc:regbank|Register[13][10],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][10], RegisterBanc:regbank|Register[15][10],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][10], RegisterBanc:regbank|Register[17][10],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][10], RegisterBanc:regbank|Register[19][10],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][10], RegisterBanc:regbank|Register[21][10],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][10], RegisterBanc:regbank|Register[23][10],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][10], RegisterBanc:regbank|Register[25][10],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][10], RegisterBanc:regbank|Register[27][10],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][10], RegisterBanc:regbank|Register[29][10],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][10], RegisterBanc:regbank|Register[31][10],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][10], RegisterBanc:regbank|Register[9][10],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][10], RegisterBanc:regbank|Register[11][10],        ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][9], RegisterBanc:regbank|Register[13][9],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][9], RegisterBanc:regbank|Register[15][9],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][9], RegisterBanc:regbank|Register[17][9],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][9], RegisterBanc:regbank|Register[19][9],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][9], RegisterBanc:regbank|Register[21][9],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][9], RegisterBanc:regbank|Register[23][9],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][9], RegisterBanc:regbank|Register[25][9],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][9], RegisterBanc:regbank|Register[27][9],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][9], RegisterBanc:regbank|Register[29][9],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][9], RegisterBanc:regbank|Register[31][9],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][9], RegisterBanc:regbank|Register[9][9],            ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][9], RegisterBanc:regbank|Register[11][9],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][8], RegisterBanc:regbank|Register[13][8],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][8], RegisterBanc:regbank|Register[15][8],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][8], RegisterBanc:regbank|Register[17][8],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][8], RegisterBanc:regbank|Register[19][8],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][8], RegisterBanc:regbank|Register[21][8],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][8], RegisterBanc:regbank|Register[23][8],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][8], RegisterBanc:regbank|Register[25][8],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][8], RegisterBanc:regbank|Register[27][8],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][8], RegisterBanc:regbank|Register[29][8],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][8], RegisterBanc:regbank|Register[31][8],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][8], RegisterBanc:regbank|Register[9][8],            ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][8], RegisterBanc:regbank|Register[11][8],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][7], RegisterBanc:regbank|Register[13][7],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][7], RegisterBanc:regbank|Register[15][7],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][7], RegisterBanc:regbank|Register[17][7],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][7], RegisterBanc:regbank|Register[19][7],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][7], RegisterBanc:regbank|Register[21][7],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][7], RegisterBanc:regbank|Register[23][7],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][7], RegisterBanc:regbank|Register[25][7],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][7], RegisterBanc:regbank|Register[27][7],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][7], RegisterBanc:regbank|Register[29][7],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][7], RegisterBanc:regbank|Register[31][7],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][7], RegisterBanc:regbank|Register[9][7],            ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][7], RegisterBanc:regbank|Register[11][7],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][6], RegisterBanc:regbank|Register[13][6],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][6], RegisterBanc:regbank|Register[15][6],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][6], RegisterBanc:regbank|Register[17][6],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][6], RegisterBanc:regbank|Register[19][6],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][6], RegisterBanc:regbank|Register[21][6],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][6], RegisterBanc:regbank|Register[23][6],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][6], RegisterBanc:regbank|Register[25][6],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][6], RegisterBanc:regbank|Register[27][6],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][6], RegisterBanc:regbank|Register[29][6],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][6], RegisterBanc:regbank|Register[31][6],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][6], RegisterBanc:regbank|Register[9][6],            ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][6], RegisterBanc:regbank|Register[11][6],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][5], RegisterBanc:regbank|Register[13][5],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][5], RegisterBanc:regbank|Register[15][5],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][5], RegisterBanc:regbank|Register[17][5],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][5], RegisterBanc:regbank|Register[19][5],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][5], RegisterBanc:regbank|Register[21][5],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][5], RegisterBanc:regbank|Register[23][5],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][5], RegisterBanc:regbank|Register[25][5],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][5], RegisterBanc:regbank|Register[27][5],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][5], RegisterBanc:regbank|Register[29][5],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][5], RegisterBanc:regbank|Register[31][5],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][5], RegisterBanc:regbank|Register[9][5],            ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][5], RegisterBanc:regbank|Register[11][5],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][4], RegisterBanc:regbank|Register[13][4],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][4], RegisterBanc:regbank|Register[15][4],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][4], RegisterBanc:regbank|Register[17][4],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][4], RegisterBanc:regbank|Register[19][4],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][4], RegisterBanc:regbank|Register[21][4],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][4], RegisterBanc:regbank|Register[23][4],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][4], RegisterBanc:regbank|Register[25][4],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][4], RegisterBanc:regbank|Register[27][4],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][4], RegisterBanc:regbank|Register[29][4],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][4], RegisterBanc:regbank|Register[31][4],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][4], RegisterBanc:regbank|Register[9][4],            ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][4], RegisterBanc:regbank|Register[11][4],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][3], RegisterBanc:regbank|Register[13][3],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][3], RegisterBanc:regbank|Register[15][3],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][3], RegisterBanc:regbank|Register[17][3],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][3], RegisterBanc:regbank|Register[19][3],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][3], RegisterBanc:regbank|Register[21][3],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][3], RegisterBanc:regbank|Register[23][3],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][3], RegisterBanc:regbank|Register[25][3],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][3], RegisterBanc:regbank|Register[27][3],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][3], RegisterBanc:regbank|Register[29][3],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][3], RegisterBanc:regbank|Register[31][3],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][3], RegisterBanc:regbank|Register[9][3],            ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][3], RegisterBanc:regbank|Register[11][3],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][2], RegisterBanc:regbank|Register[13][2],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][2], RegisterBanc:regbank|Register[15][2],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][2], RegisterBanc:regbank|Register[17][2],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][2], RegisterBanc:regbank|Register[19][2],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][2], RegisterBanc:regbank|Register[21][2],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][2], RegisterBanc:regbank|Register[23][2],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][2], RegisterBanc:regbank|Register[25][2],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][2], RegisterBanc:regbank|Register[27][2],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][2], RegisterBanc:regbank|Register[29][2],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][2], RegisterBanc:regbank|Register[31][2],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][2], RegisterBanc:regbank|Register[9][2],            ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][2], RegisterBanc:regbank|Register[11][2],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][1], RegisterBanc:regbank|Register[13][1],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][1], RegisterBanc:regbank|Register[15][1],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][1], RegisterBanc:regbank|Register[17][1],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][1], RegisterBanc:regbank|Register[19][1],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][1], RegisterBanc:regbank|Register[21][1],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][1], RegisterBanc:regbank|Register[23][1],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][1], RegisterBanc:regbank|Register[25][1],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][1], RegisterBanc:regbank|Register[27][1],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][1], RegisterBanc:regbank|Register[29][1],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][1], RegisterBanc:regbank|Register[31][1],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][1], RegisterBanc:regbank|Register[9][1],            ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][1], RegisterBanc:regbank|Register[11][1],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[12][0], RegisterBanc:regbank|Register[13][0],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[14][0], RegisterBanc:regbank|Register[15][0],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[16][0], RegisterBanc:regbank|Register[17][0],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[18][0], RegisterBanc:regbank|Register[19][0],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[20][0], RegisterBanc:regbank|Register[21][0],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[22][0], RegisterBanc:regbank|Register[23][0],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[24][0], RegisterBanc:regbank|Register[25][0],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[26][0], RegisterBanc:regbank|Register[27][0],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[28][0], RegisterBanc:regbank|Register[29][0],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[30][0], RegisterBanc:regbank|Register[31][0],          ;
+;                              ;                         ; RegisterBanc:regbank|Register[8][0], RegisterBanc:regbank|Register[9][0],            ;
+;                              ;                         ; RegisterBanc:regbank|Register[10][0], RegisterBanc:regbank|Register[11][0]           ;
+; SimpleReg:pcreg|DataOut[31]  ; Lost Fanouts            ; SimpleReg:pcreg|DataOut[30], SimpleReg:pcreg|DataOut[29],                            ;
+;                              ;                         ; SimpleReg:pcreg|DataOut[28], SimpleReg:pcreg|DataOut[27],                            ;
+;                              ;                         ; SimpleReg:pcreg|DataOut[26], SimpleReg:pcreg|DataOut[25],                            ;
+;                              ;                         ; SimpleReg:pcreg|DataOut[24], SimpleReg:pcreg|DataOut[23],                            ;
+;                              ;                         ; SimpleReg:pcreg|DataOut[22], SimpleReg:pcreg|DataOut[21],                            ;
+;                              ;                         ; SimpleReg:pcreg|DataOut[20], SimpleReg:pcreg|DataOut[19],                            ;
+;                              ;                         ; SimpleReg:pcreg|DataOut[18], SimpleReg:pcreg|DataOut[17],                            ;
+;                              ;                         ; SimpleReg:pcreg|DataOut[16], SimpleReg:pcreg|DataOut[15],                            ;
+;                              ;                         ; SimpleReg:pcreg|DataOut[14], SimpleReg:pcreg|DataOut[13],                            ;
+;                              ;                         ; SimpleReg:pcreg|DataOut[12], SimpleReg:pcreg|DataOut[11],                            ;
+;                              ;                         ; SimpleReg:pcreg|DataOut[10], SimpleReg:pcreg|DataOut[9], SimpleReg:pcreg|DataOut[8], ;
+;                              ;                         ; SimpleReg:pcreg|DataOut[7]                                                           ;
+; InstructionMem:insmem|mem~26 ; Stuck at GND            ; InstructionMem:insmem|JADDR[26], IF_ID:ifid|RD[4], ID_Ex:idex|RD[4],                 ;
+;                              ; due to stuck port clock ; EX_MEM:exmen|WRITEADDRESS[4]                                                         ;
+; InstructionMem:insmem|mem~25 ; Stuck at GND            ; InstructionMem:insmem|JADDR[25], IF_ID:ifid|RD[3], ID_Ex:idex|RD[3],                 ;
+;                              ; due to stuck port clock ; EX_MEM:exmen|WRITEADDRESS[3]                                                         ;
+; InstructionMem:insmem|mem~11 ; Stuck at GND            ; InstructionMem:insmem|IMM[11], IF_ID:ifid|IMM[11], ID_Ex:idex|IMMVALUE[11]           ;
+;                              ; due to stuck port clock ;                                                                                      ;
+; InstructionMem:insmem|mem~15 ; Stuck at GND            ; InstructionMem:insmem|IMM[15], IF_ID:ifid|IMM[15], ID_Ex:idex|IMMVALUE[15]           ;
+;                              ; due to stuck port clock ;                                                                                      ;
+; InstructionMem:insmem|mem~14 ; Stuck at GND            ; InstructionMem:insmem|IMM[14], IF_ID:ifid|IMM[14], ID_Ex:idex|IMMVALUE[14]           ;
+;                              ; due to stuck port clock ;                                                                                      ;
+; InstructionMem:insmem|mem~2  ; Stuck at GND            ; InstructionMem:insmem|IMM[2], IF_ID:ifid|IMM[2], ID_Ex:idex|IMMVALUE[2]              ;
+;                              ; due to stuck port clock ;                                                                                      ;
+; InstructionMem:insmem|mem~10 ; Stuck at GND            ; InstructionMem:insmem|IMM[10], IF_ID:ifid|IMM[10], ID_Ex:idex|IMMVALUE[10]           ;
+;                              ; due to stuck port clock ;                                                                                      ;
+; InstructionMem:insmem|mem~9  ; Stuck at GND            ; InstructionMem:insmem|IMM[9], IF_ID:ifid|IMM[9], ID_Ex:idex|IMMVALUE[9]              ;
+;                              ; due to stuck port clock ;                                                                                      ;
+; InstructionMem:insmem|mem~8  ; Stuck at GND            ; InstructionMem:insmem|IMM[8], IF_ID:ifid|IMM[8], ID_Ex:idex|IMMVALUE[8]              ;
+;                              ; due to stuck port clock ;                                                                                      ;
+; InstructionMem:insmem|mem~7  ; Stuck at GND            ; InstructionMem:insmem|IMM[7], IF_ID:ifid|IMM[7], ID_Ex:idex|IMMVALUE[7]              ;
+;                              ; due to stuck port clock ;                                                                                      ;
+; InstructionMem:insmem|mem~6  ; Stuck at GND            ; InstructionMem:insmem|IMM[6], IF_ID:ifid|IMM[6], ID_Ex:idex|IMMVALUE[6]              ;
+;                              ; due to stuck port clock ;                                                                                      ;
+; InstructionMem:insmem|mem~5  ; Stuck at GND            ; InstructionMem:insmem|IMM[5], IF_ID:ifid|IMM[5], ID_Ex:idex|IMMVALUE[5]              ;
+;                              ; due to stuck port clock ;                                                                                      ;
+; InstructionMem:insmem|mem~4  ; Stuck at GND            ; InstructionMem:insmem|IMM[4], IF_ID:ifid|IMM[4], ID_Ex:idex|IMMVALUE[4]              ;
+;                              ; due to stuck port clock ;                                                                                      ;
+; InstructionMem:insmem|mem~3  ; Stuck at GND            ; InstructionMem:insmem|IMM[3], IF_ID:ifid|IMM[3], ID_Ex:idex|IMMVALUE[3]              ;
+;                              ; due to stuck port clock ;                                                                                      ;
+; InstructionMem:insmem|mem~19 ; Stuck at GND            ; InstructionMem:insmem|JADDR[19], IF_ID:ifid|RS[2]                                    ;
+;                              ; due to stuck port clock ;                                                                                      ;
+; InstructionMem:insmem|mem~20 ; Stuck at GND            ; InstructionMem:insmem|JADDR[20], IF_ID:ifid|RS[3]                                    ;
+;                              ; due to stuck port clock ;                                                                                      ;
+; InstructionMem:insmem|mem~21 ; Stuck at GND            ; InstructionMem:insmem|JADDR[21], IF_ID:ifid|RS[4]                                    ;
+;                              ; due to stuck port clock ;                                                                                      ;
++------------------------------+-------------------------+--------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -4420,12 +5634,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1329  ;
-; Number of registers using Synchronous Clear  ; 249   ;
-; Number of registers using Synchronous Load   ; 32    ;
+; Total registers                              ; 492   ;
+; Number of registers using Synchronous Clear  ; 181   ;
+; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 1071  ;
+; Number of registers using Clock Enable       ; 256   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -4435,22 +5649,21 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------------------------+---------+
 ; Inverted Register                       ; Fan out ;
 +-----------------------------------------+---------+
-; InstructionMem:insmem|OpCode[0]         ; 8       ;
-; InstructionMem:insmem|OpCode[1]         ; 8       ;
-; InstructionMem:insmem|OpCode[2]         ; 8       ;
-; InstructionMem:insmem|OpCode[3]         ; 8       ;
-; InstructionMem:insmem|OpCode[4]         ; 8       ;
-; ID_Ex:idex|OPCODE[0]                    ; 32      ;
-; ID_Ex:idex|OPCODE[1]                    ; 18      ;
-; ID_Ex:idex|OPCODE[4]                    ; 10      ;
-; ID_Ex:idex|OPCODE[2]                    ; 19      ;
-; ID_Ex:idex|OPCODE[3]                    ; 19      ;
+; InstructionMem:insmem|OpCode[0]         ; 3       ;
+; InstructionMem:insmem|OpCode[1]         ; 2       ;
+; InstructionMem:insmem|OpCode[2]         ; 2       ;
+; InstructionMem:insmem|OpCode[3]         ; 2       ;
+; ID_Ex:idex|OPCODE[2]                    ; 16      ;
+; ID_Ex:idex|OPCODE[4]                    ; 11      ;
+; ID_Ex:idex|OPCODE[0]                    ; 23      ;
+; ID_Ex:idex|OPCODE[1]                    ; 13      ;
+; ID_Ex:idex|OPCODE[3]                    ; 15      ;
+; IF_ID:ifid|OPCODE[2]                    ; 7       ;
+; IF_ID:ifid|OPCODE[4]                    ; 7       ;
 ; IF_ID:ifid|OPCODE[0]                    ; 6       ;
 ; IF_ID:ifid|OPCODE[1]                    ; 7       ;
-; IF_ID:ifid|OPCODE[4]                    ; 7       ;
-; IF_ID:ifid|OPCODE[2]                    ; 7       ;
 ; IF_ID:ifid|OPCODE[3]                    ; 7       ;
-; Total number of inverted registers = 15 ;         ;
+; Total number of inverted registers = 14 ;         ;
 +-----------------------------------------+---------+
 
 
@@ -4459,25 +5672,26 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
-; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |Processor|DataMemory:datamen|DataOut[6]   ;
-; 3:1                ; 25 bits   ; 50 LEs        ; 0 LEs                ; 50 LEs                 ; Yes        ; |Processor|DataMemory:datamen|DataOut[31]  ;
-; 3:1                ; 27 bits   ; 54 LEs        ; 0 LEs                ; 54 LEs                 ; Yes        ; |Processor|InstructionMem:insmem|IMM[1]    ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |Processor|SimpleReg:pcreg|DataOut[15]     ;
-; 33:1               ; 32 bits   ; 704 LEs       ; 672 LEs              ; 32 LEs                 ; Yes        ; |Processor|ID_Ex:idex|RVALUE1[20]          ;
-; 33:1               ; 32 bits   ; 704 LEs       ; 672 LEs              ; 32 LEs                 ; Yes        ; |Processor|ID_Ex:idex|RVALUE2[19]          ;
-; 40:1               ; 12 bits   ; 312 LEs       ; 84 LEs               ; 228 LEs                ; Yes        ; |Processor|EX_MEM:exmen|MEMORYADDRESS[18]  ;
-; 43:1               ; 4 bits    ; 112 LEs       ; 52 LEs               ; 60 LEs                 ; Yes        ; |Processor|EX_MEM:exmen|MEMORYADDRESS[29]  ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |Processor|InstructionMem:insmem|OpCode[1] ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|ALU:alu|ShiftRight0             ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|ALU:alu|ShiftRight0             ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Processor|DataMemory:datamen|DataOut[0]   ;
+; 3:1                ; 25 bits   ; 50 LEs        ; 0 LEs                ; 50 LEs                 ; Yes        ; |Processor|DataMemory:datamen|DataOut[16]  ;
+; 3:1                ; 27 bits   ; 54 LEs        ; 0 LEs                ; 54 LEs                 ; Yes        ; |Processor|InstructionMem:insmem|IMM[14]   ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Processor|SimpleReg:pcreg|DataOut[29]     ;
+; 4:1                ; 27 bits   ; 54 LEs        ; 54 LEs               ; 0 LEs                  ; Yes        ; |Processor|SimpleReg:pcreg|DataOut[5]      ;
+; 33:1               ; 32 bits   ; 704 LEs       ; 672 LEs              ; 32 LEs                 ; Yes        ; |Processor|ID_Ex:idex|RVALUE1[4]           ;
+; 33:1               ; 32 bits   ; 704 LEs       ; 672 LEs              ; 32 LEs                 ; Yes        ; |Processor|ID_Ex:idex|RVALUE2[6]           ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |Processor|InstructionMem:insmem|OpCode[4] ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|ALU:alu|ShiftLeft0              ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|ALU:alu|ShiftLeft0              ;
 ; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|ALU:alu|ShiftRight0             ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Processor|ALU:alu|ShiftLeft0              ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Processor|ALU:alu|ShiftRight0             ;
-; 4:1                ; 50 bits   ; 100 LEs       ; 100 LEs              ; 0 LEs                  ; No         ; |Processor|ALU:alu|ShiftLeft0              ;
+; 4:1                ; 50 bits   ; 100 LEs       ; 100 LEs              ; 0 LEs                  ; No         ; |Processor|ALU:alu|ShiftRight0             ;
 ; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |Processor|MuxReg:reg1|Mux0                ;
 ; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |Processor|MuxReg:reg2|Mux0                ;
-; 40:1               ; 12 bits   ; 312 LEs       ; 132 LEs              ; 180 LEs                ; No         ; |Processor|EX_MEM:exmen|MEMORYADDRESS      ;
-; 43:1               ; 2 bits    ; 56 LEs        ; 26 LEs               ; 30 LEs                 ; No         ; |Processor|EX_MEM:exmen|MEMORYADDRESS      ;
+; 39:1               ; 12 bits   ; 312 LEs       ; 120 LEs              ; 192 LEs                ; No         ; |Processor|ALU:alu|Mux15                   ;
+; 39:1               ; 12 bits   ; 312 LEs       ; 120 LEs              ; 192 LEs                ; No         ; |Processor|ALU:alu|Mux21                   ;
+; 42:1               ; 4 bits    ; 112 LEs       ; 48 LEs               ; 64 LEs                 ; No         ; |Processor|ALU:alu|Mux3                    ;
+; 42:1               ; 2 bits    ; 56 LEs        ; 24 LEs               ; 32 LEs                 ; No         ; |Processor|ALU:alu|Mux28                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------+
 
 
@@ -4629,15 +5843,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+--------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "RegisterBanc:regbank"                                                               ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                             ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-; ro   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+-------------------------------------------------------------------------------------+
-
-
 +-----------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "IF_ID:ifid"                                                                          ;
 +-------+--------+----------+-------------------------------------------------------------------------------------+
@@ -4653,33 +5858,33 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 1329                        ;
-;     ENA               ; 1036                        ;
-;     ENA SCLR          ; 35                          ;
-;     SCLR              ; 182                         ;
-;     SCLR SLD          ; 32                          ;
-;     plain             ; 44                          ;
-; arriav_lcell_comb     ; 1373                        ;
-;     arith             ; 111                         ;
+; arriav_ff             ; 492                         ;
+;     ENA               ; 256                         ;
+;     SCLR              ; 181                         ;
+;     plain             ; 55                          ;
+; arriav_lcell_comb     ; 767                         ;
+;     arith             ; 86                          ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 32                          ;
+;         1 data inputs ; 7                           ;
 ;         2 data inputs ; 14                          ;
-;         4 data inputs ; 64                          ;
-;     extend            ; 13                          ;
-;         7 data inputs ; 13                          ;
-;     normal            ; 1249                        ;
-;         1 data inputs ; 6                           ;
-;         2 data inputs ; 46                          ;
-;         3 data inputs ; 74                          ;
-;         4 data inputs ; 63                          ;
-;         5 data inputs ; 198                         ;
-;         6 data inputs ; 862                         ;
+;         3 data inputs ; 56                          ;
+;         4 data inputs ; 8                           ;
+;     extend            ; 3                           ;
+;         7 data inputs ; 3                           ;
+;     normal            ; 678                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 4                           ;
+;         2 data inputs ; 71                          ;
+;         3 data inputs ; 93                          ;
+;         4 data inputs ; 59                          ;
+;         5 data inputs ; 98                          ;
+;         6 data inputs ; 352                         ;
 ; arriav_mac            ; 2                           ;
-; boundary_port         ; 136                         ;
+; boundary_port         ; 269                         ;
 ; stratixv_ram_block    ; 56                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 3.58                        ;
+; Average LUT depth     ; 3.52                        ;
 +-----------------------+-----------------------------+
 
 
@@ -4688,7 +5893,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:06     ;
+; Top            ; 00:00:04     ;
 +----------------+--------------+
 
 
@@ -4698,7 +5903,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Mon Oct 16 11:59:35 2017
+    Info: Processing started: Mon Oct 16 15:11:54 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off proc -c proc
 Info (20032): Parallel compilation is enabled and will use up to 2 processors
 Info (12021): Found 1 design units, including 1 entities, in source file RegisterBanc.v
@@ -4732,24 +5937,26 @@ Info (12021): Found 1 design units, including 1 entities, in source file IF_ID.v
 Info (12021): Found 1 design units, including 1 entities, in source file SimpleReg.v
     Info (12023): Found entity 1: SimpleReg File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/SimpleReg.v Line: 3
 Info (12127): Elaborating entity "Processor" for the top level hierarchy
-Info (12128): Elaborating entity "MuxData" for hierarchy "MuxData:pcselectmux" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 82
-Info (12128): Elaborating entity "SimpleReg" for hierarchy "SimpleReg:pcreg" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 90
-Info (12128): Elaborating entity "InstructionMem" for hierarchy "InstructionMem:insmem" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 105
+Warning (10036): Verilog HDL or VHDL warning at Processor.v(18): object "newClock" assigned a value but never read File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 18
+Info (12128): Elaborating entity "MuxData" for hierarchy "MuxData:pcselectmux" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 86
+Info (12128): Elaborating entity "SimpleReg" for hierarchy "SimpleReg:pcreg" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 94
+Info (12128): Elaborating entity "InstructionMem" for hierarchy "InstructionMem:insmem" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 109
+Warning (10850): Verilog HDL warning at InstructionMem.v(20): number of words (129) in memory file does not match the number of elements in the address range [0:127] File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/InstructionMem.v Line: 20
 Warning (10030): Net "mem.data_a" at InstructionMem.v(15) has no driver or initial value, using a default initial value '0' File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/InstructionMem.v Line: 15
 Warning (10030): Net "mem.waddr_a" at InstructionMem.v(15) has no driver or initial value, using a default initial value '0' File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/InstructionMem.v Line: 15
 Warning (10030): Net "mem.we_a" at InstructionMem.v(15) has no driver or initial value, using a default initial value '0' File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/InstructionMem.v Line: 15
-Info (12128): Elaborating entity "IF_ID" for hierarchy "IF_ID:ifid" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 126
-Info (12128): Elaborating entity "SignExt" for hierarchy "SignExt:signext" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 129
-Info (12128): Elaborating entity "ControlUnit" for hierarchy "ControlUnit:ctrlunit" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 147
-Info (12128): Elaborating entity "MuxReg" for hierarchy "MuxReg:reg1" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 150
-Info (12128): Elaborating entity "RegisterBanc" for hierarchy "RegisterBanc:regbank" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 170
-Info (12128): Elaborating entity "ID_Ex" for hierarchy "ID_Ex:idex" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 195
-Info (12128): Elaborating entity "ALU" for hierarchy "ALU:alu" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 203
-Info (12128): Elaborating entity "EX_MEM" for hierarchy "EX_MEM:exmen" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 222
-Info (12128): Elaborating entity "DataMemory" for hierarchy "DataMemory:datamen" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 234
+Info (12128): Elaborating entity "IF_ID" for hierarchy "IF_ID:ifid" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 130
+Info (12128): Elaborating entity "SignExt" for hierarchy "SignExt:signext" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 133
+Info (12128): Elaborating entity "ControlUnit" for hierarchy "ControlUnit:ctrlunit" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 151
+Info (12128): Elaborating entity "MuxReg" for hierarchy "MuxReg:reg1" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 154
+Info (12128): Elaborating entity "RegisterBanc" for hierarchy "RegisterBanc:regbank" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 174
+Info (12128): Elaborating entity "ID_Ex" for hierarchy "ID_Ex:idex" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 200
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:alu" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 208
+Info (12128): Elaborating entity "EX_MEM" for hierarchy "EX_MEM:exmen" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 231
+Info (12128): Elaborating entity "DataMemory" for hierarchy "DataMemory:datamen" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 243
 Warning (10850): Verilog HDL warning at DataMemory.v(16): number of words (60348) in memory file does not match the number of elements in the address range [0:60348] File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/DataMemory.v Line: 16
-Warning (10230): Verilog HDL assignment warning at DataMemory.v(26): truncated value with size 32 to match size of target (7) File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/DataMemory.v Line: 26
-Info (12128): Elaborating entity "MEM_WB" for hierarchy "MEM_WB:menwb" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 247
+Warning (10230): Verilog HDL assignment warning at DataMemory.v(27): truncated value with size 32 to match size of target (7) File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/DataMemory.v Line: 27
+Info (12128): Elaborating entity "MEM_WB" for hierarchy "MEM_WB:menwb" File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 256
 Warning (276027): Inferred dual-clock RAM node "DataMemory:datamen|Memory_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
 Info (276014): Found 1 instances of uninferred RAM logic
     Info (276004): RAM logic "InstructionMem:insmem|mem" is uninferred due to inappropriate RAM size File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/InstructionMem.v Line: 15
@@ -4795,22 +6002,104 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/deco
     Info (12023): Found entity 1: decode_61a File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/db/decode_61a.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_sfb.tdf
     Info (12023): Found entity 1: mux_sfb File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/db/mux_sfb.tdf Line: 23
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "inst[2]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[3]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[4]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[5]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[6]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[7]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[8]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[9]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[10]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[11]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[14]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[15]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[16]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[19]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[20]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[21]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[25]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "inst[26]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 5
+    Warning (13410): Pin "pss[1]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[2]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[3]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[4]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[5]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[6]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[7]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[8]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[9]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[10]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[11]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[12]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[13]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[14]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[15]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[16]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[17]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[18]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[19]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[20]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[21]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[22]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[23]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[24]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[25]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[26]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[27]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[28]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[29]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[30]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "pss[31]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 6
+    Warning (13410): Pin "wa[3]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 7
+    Warning (13410): Pin "wa[4]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 7
+    Warning (13410): Pin "imme[2]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[3]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[4]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[5]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[6]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[7]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[8]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[9]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[10]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[11]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[14]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[15]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[16]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[17]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[18]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[19]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[20]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[21]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[22]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[23]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[24]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[25]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[26]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[27]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[28]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[29]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[30]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "imme[31]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 8
+    Warning (13410): Pin "add[3]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 12
+    Warning (13410): Pin "add[4]" is stuck at GND File: /home/ferllini13/Desktop/CE-4301-Arqui1/proce/Processor.v Line: 12
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 3 registers lost all their fanouts during netlist optimizations.
+Info (17049): 25 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file /home/ferllini13/Desktop/CE-4301-Arqui1/proce/output_files/proc.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 2772 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1476 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 134 output pins
-    Info (21061): Implemented 2578 logic cells
+    Info (21059): Implemented 267 output pins
+    Info (21061): Implemented 1149 logic cells
     Info (21064): Implemented 56 RAM segments
     Info (21062): Implemented 2 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 1075 megabytes
-    Info: Processing ended: Mon Oct 16 11:59:59 2017
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 90 warnings
+    Info: Peak virtual memory: 1068 megabytes
+    Info: Processing ended: Mon Oct 16 15:12:18 2017
     Info: Elapsed time: 00:00:24
-    Info: Total CPU time (on all processors): 00:00:49
+    Info: Total CPU time (on all processors): 00:00:52
 
 
 +------------------------------------------+

@@ -1,13 +1,17 @@
 `timescale 1ns / 1ps
 
-module Processor(clk,newClock,Reset,inst,pss,wa,imme,dat);
+module Processor(clk,Reset,inst,pss,wa,imme,dat, a, b,sb,add,val,rr);
 	input clk, Reset;
 	output [31:0] inst;
 	output [31:0] pss;
 	output [4:0] wa;
-	output [0:0] newClock;
 	output [31:0] imme;
 	output [31:0] dat;
+	output [31:0] a,b;
+	output sb;
+	output [4:0] add;
+	output [31:0]val,rr;
+	
 	
 	
 	
@@ -104,7 +108,7 @@ module Processor(clk,newClock,Reset,inst,pss,wa,imme,dat);
 		.NEWPC(newpc)
 	);
 		assign inst=instruction;
-		assign pss=newpc;
+		assign pss=pcselect;
 	
 	IF_ID ifid(.clk(clk),
 		.Reset(Reset),
@@ -167,7 +171,8 @@ module Processor(clk,newClock,Reset,inst,pss,wa,imme,dat);
 		.RegWrite(regwrite3),
 		.clk(clk),
 		.ro(r)
-	);		
+	);	
+		assign rr=r;
 
 
 	ID_Ex idex(
@@ -201,7 +206,11 @@ module Processor(clk,newClock,Reset,inst,pss,wa,imme,dat);
 	
 	ALU alu(.A(rvalue11), .B(alumuxout), .ALUOp(opcode2) ,
 	 .ALUOut(aluout), .Zero(zero));
+	assign sb=bselector1;
+	assign a=rvalue11;
+	assign b=alumuxout;
 				
+	assign dat=aluout;
 				
 	EX_MEM exmen(
 		.clk(clk),
@@ -221,7 +230,7 @@ module Processor(clk,newClock,Reset,inst,pss,wa,imme,dat);
 		.REGWRITE(regwrite2)
 	);
 	
-	assign dat=memoryaddress;
+
 
 	DataMemory datamen(
 		.clk(clk),
@@ -245,6 +254,9 @@ module Processor(clk,newClock,Reset,inst,pss,wa,imme,dat);
 		.WRITEADDRESS(writeaddress1),
 		.WRITEDATA(writedata)
 	);
+	
+	assign add=writeaddress1;
+	assign val=writedata;
 	
 	
 

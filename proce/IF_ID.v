@@ -24,7 +24,7 @@ module IF_ID(clk,Reset,Enable,Rd,Rs,Rt,Imm,Jaddr,Opcode,Pc,RD,RS,RT,IMM,JADDR,OP
 		JADDR=32'd0;
 	end
 
-	always @ (posedge clk) begin
+	always @ (negedge clk) begin
 		if(Reset)begin
 			RS<=5'd0;
 			RD<=5'd0;
