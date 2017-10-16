@@ -1,29 +1,23 @@
 `timescale 1ns / 1ps
 
-module InstructionMem(Instruct,Pc,clk,OpCode,RS,RT,RD,IMM,JADDR,UsableInstruc,NEWPC);
+module InstructionMem(Pc,clk,OpCode,RS,RT,RD,IMM,JADDR,UsableInstruc,NEWPC);
 	input clk;
-	input [31:0] Instruct;
 	input  [31:0] Pc;
-  	output reg [4:0] OpCode;
-  	output reg [4:0] RS, RT, RD;
+  	output  [4:0] OpCode;
+  	output  [4:0] RS, RT, RD;
 	output reg [31:0] UsableInstruc;
 	output [31:0] NEWPC;
-	output reg [16:0] IMM;
-	output reg [31:0] JADDR;
+	output  [16:0] IMM;
+	output  [31:0] JADDR;
 	 
 	 
 	reg [0:0] ended; 
-	//reg [31:0] mem [0:19];
+	reg [31:0] mem [0:127];
 	 
 	initial begin
 		ended=1'd0;
 		UsableInstruc =32'b11111000000000000000000000000000;
-		OpCode =5'b11111;
-		RS =5'd0;
-		RT =5'd0; 
-		RD =5'd0;
-		IMM =17'd0;
-		JADDR =31'd0;
+		$readmemb("test.txt",mem);
 
 		/*
 		mem[0]=32'b11111000000000000000000000000000; //NOP
@@ -50,22 +44,23 @@ module InstructionMem(Instruct,Pc,clk,OpCode,RS,RT,RD,IMM,JADDR,UsableInstruc,NE
 	end 
 	
 	
-	always @ (Instruct or Pc or ended or UsableInstruc) begin
-		if (ended) UsableInstruc=32'b11111000000000000000000000000000;
-		else if (UsableInstruc==32'b11111111111111111111111111111111) ended=1'd1;		
-		else UsableInstruc=Instruct;
-
+	always @ (posedge clk) begin
+	   if (ended) UsableInstruc<=32'b11111000000000000000000000000000;
+		else if (mem[Pc]==32'b11111111111111111111111111111111) ended=1'd1;
 		
-		OpCode = UsableInstruc[31:27];
-		RS = UsableInstruc[21:17];
-		RT = UsableInstruc[16:12];
-		RD = UsableInstruc[26:22];
-		IMM = UsableInstruc[16:0];
-		JADDR[26:0] = UsableInstruc[26:0];
-		JADDR[31:27]=5'd0;
+		else UsableInstruc<=mem[Pc];
                                                                 
 	 end
-	 assign NEWPC = (OpCode==5'd16)? JADDR: Pc+1; 
+	 
+	assign OpCode = UsableInstruc[31:27];
+	assign RS = UsableInstruc[21:17];
+	assign RT = UsableInstruc[16:12];
+	assign RD = UsableInstruc[26:22];
+	assign IMM = UsableInstruc[16:0];
+	assign JADDR[26:0] = UsableInstruc[26:0];
+	assign JADDR[31:27]=5'd0;
+	 
+	assign NEWPC = (OpCode==5'd16)? JADDR: Pc+1; 
 
 	 
 endmodule

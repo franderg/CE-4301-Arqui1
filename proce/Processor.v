@@ -1,9 +1,24 @@
 `timescale 1ns / 1ps
 
-module Processor(clk,Reset,inst,pss);
+module Processor(clk,newClock,Reset,inst,pss,wa,imme,dat);
 	input clk, Reset;
 	output [31:0] inst;
 	output [31:0] pss;
+	output [4:0] wa;
+	output [0:0] newClock;
+	output [31:0] imme;
+	output [31:0] dat;
+	
+	
+	
+	reg [0:0] newClock;
+	reg [5:0] move_cont;
+
+  always @ (posedge clk) begin
+		move_cont = move_cont + 1'b1;
+      newClock = move_cont[2];
+  end
+	
 	
 	
 	wire [31:0] pcsignal;
@@ -74,19 +89,9 @@ module Processor(clk,Reset,inst,pss);
 		.DataOut(pc)
 	);
 	
-	
-	
-	wire [31:0] ins;
-	insmemrom rom(
-		.address(pc),
-		.clock(clk),
-		.q(ins)
-	);
-	assign inst=ins;
 
 	
 	InstructionMem insmem(
-		.Instruct(ins),
 		.Pc(pc),
 		.clk(clk),
 		.OpCode(opcode),
@@ -98,6 +103,7 @@ module Processor(clk,Reset,inst,pss);
 		.UsableInstruc(instruction),
 		.NEWPC(newpc)
 	);
+		assign inst=instruction;
 		assign pss=newpc;
 	
 	IF_ID ifid(.clk(clk),
@@ -119,7 +125,7 @@ module Processor(clk,Reset,inst,pss);
 		.PC()	
 	);
 				
-    
+    assign wa=rd1;
     SignExt signext(.SEin(imm1),.SEout(immvalue1));
     
     
@@ -144,7 +150,7 @@ module Processor(clk,Reset,inst,pss);
 	MuxReg reg1(.Output(muxout1), .Input0(rs1), .Input1(rd1), .Input2(rs1),.Selector(regselector));
 	MuxReg reg2(.Output(muxout2), .Input0(rt1), .Input1(rs1), .Input2(rd1),.Selector(regselector));
 	
-	//wire [31:0] r;
+	wire [31:0] r;
 	//7wire[6:0] seven1; 
 	
 	//sevenSeg ss(.R(r),.Seg(seven1));
@@ -187,6 +193,7 @@ module Processor(clk,Reset,inst,pss);
 		.MEMRD(memrd1),
 		.REGWRITE(regwrite1)
 	);
+	assign imme=immvalue2;
 				
 	
 	MuxData alumuxB(.Output(alumuxout), .Input0(rvalue21),.Input1(immvalue2),.Selector(bselector1));
@@ -213,6 +220,8 @@ module Processor(clk,Reset,inst,pss);
 		.MEMWD(memwd2),
 		.REGWRITE(regwrite2)
 	);
+	
+	assign dat=memoryaddress;
 
 	DataMemory datamen(
 		.clk(clk),
@@ -236,6 +245,8 @@ module Processor(clk,Reset,inst,pss);
 		.WRITEADDRESS(writeaddress1),
 		.WRITEDATA(writedata)
 	);
+	
+	
 
 				
 endmodule

@@ -1,5 +1,5 @@
 Assembler report for proc
-Sun Oct 15 17:55:07 2017
+Mon Oct 16 12:02:03 2017
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -9,10 +9,9 @@ Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
   1. Legal Notice
   2. Assembler Summary
   3. Assembler Settings
-  4. Assembler Encrypted IP Cores Summary
-  5. Assembler Generated Files
-  6. Assembler Device Options: proc.sof
-  7. Assembler Messages
+  4. Assembler Generated Files
+  5. Assembler Device Options: proc.sof
+  6. Assembler Messages
 
 
 
@@ -39,7 +38,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Sun Oct 15 17:55:07 2017 ;
+; Assembler Status      ; Successful - Mon Oct 16 12:02:03 2017 ;
 ; Revision Name         ; proc                                  ;
 ; Top-level Entity Name ; Processor                             ;
 ; Family                ; Cyclone V                             ;
@@ -54,23 +53,13 @@ agreement for further details.
 +--------+---------+---------------+
 
 
-+------------------------------------------------+
-; Assembler Encrypted IP Cores Summary           ;
-+--------+------------------------+--------------+
-; Vendor ; IP Core Name           ; License Type ;
-+--------+------------------------+--------------+
-; Altera ; Signal Tap (6AF7 BCE1) ; Licensed     ;
-; Altera ; Signal Tap (6AF7 BCEC) ; Licensed     ;
-+--------+------------------------+--------------+
-
-
-+------------------------------------------------------+
-; Assembler Generated Files                            ;
-+------------------------------------------------------+
-; File Name                                            ;
-+------------------------------------------------------+
-; /home/ferllini13/Desktop/proce/output_files/proc.sof ;
-+------------------------------------------------------+
++---------------------------------------------------------------------+
+; Assembler Generated Files                                           ;
++---------------------------------------------------------------------+
+; File Name                                                           ;
++---------------------------------------------------------------------+
+; /home/ferllini13/Desktop/CE-4301-Arqui1/proce/output_files/proc.sof ;
++---------------------------------------------------------------------+
 
 
 +------------------------------------+
@@ -78,8 +67,8 @@ agreement for further details.
 +----------------+-------------------+
 ; Option         ; Setting           ;
 +----------------+-------------------+
-; JTAG usercode  ; 0x00BE0937        ;
-; Checksum       ; 0x00BE0937        ;
+; JTAG usercode  ; 0x017D2392        ;
+; Checksum       ; 0x017D2392        ;
 +----------------+-------------------+
 
 
@@ -89,12 +78,12 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Sun Oct 15 17:54:55 2017
+    Info: Processing started: Mon Oct 16 12:01:51 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off proc -c proc
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 968 megabytes
-    Info: Processing ended: Sun Oct 15 17:55:07 2017
+    Info: Peak virtual memory: 1008 megabytes
+    Info: Processing ended: Mon Oct 16 12:02:03 2017
     Info: Elapsed time: 00:00:12
     Info: Total CPU time (on all processors): 00:00:12
 

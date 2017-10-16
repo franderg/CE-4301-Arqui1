@@ -5,25 +5,25 @@ module DataMemory(clk,Reset,MemoryAddress,memWD,memRD,DataOut,DataIn);
 	input [31:0] MemoryAddress,DataIn;
    input memRD, memWD,Reset,clk;
 	
+	
+	
+	reg [6:0] Memory [0:60348];
+	
+	
+	
 	initial begin
 		DataOut=32'd0;
+		$readmemb("text.txt",Memory);
+
  	end
 	
-	/*
-	wire [6:0] data;
-	mem mem1(
-		.address(MemoryAddress),
-		.clock(clk),
-		.q(data)
-	);*/
 	
-	
-	always @ (memWD or memRD or DataIn or MemoryAddress)begin
+	always @ (posedge clk)begin
 		if (memRD)begin
-			DataOut=32'd0;
+			DataOut=Memory[MemoryAddress];
 		end
 		else if (memWD)begin
-			DataOut=32'd0;
+			Memory[MemoryAddress]=DataIn;
 		end
 		else  DataOut=MemoryAddress;
 
