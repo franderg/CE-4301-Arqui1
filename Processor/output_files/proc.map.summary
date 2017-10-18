@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Mon Oct 16 15:12:18 2017
+Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+Revision Name : proc
+Top-level Entity Name : Processor
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 492
+Total pins : 269
+Total virtual pins : 0
+Total block memory bits : 422,443
+Total DSP Blocks : 2
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0

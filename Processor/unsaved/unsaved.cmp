@@ -1,0 +1,16 @@
+	component unsaved is
+		port (
+			clk_clk         : in  std_logic                     := 'X';             -- clk
+			pc_address      : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- address
+			pc_debugaccess  : in  std_logic                     := 'X';             -- debugaccess
+			pc_clken        : in  std_logic                     := 'X';             -- clken
+			pc_chipselect   : in  std_logic                     := 'X';             -- chipselect
+			pc_write        : in  std_logic                     := 'X';             -- write
+			pc_readdata     : out std_logic_vector(31 downto 0);                    -- readdata
+			pc_writedata    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			pc_byteenable   : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			reset_reset     : in  std_logic                     := 'X';             -- reset
+			reset_reset_req : in  std_logic                     := 'X'              -- reset_req
+		);
+	end component unsaved;
+
