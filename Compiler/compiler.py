@@ -6,17 +6,17 @@
 #                                                   #
 #####################################################
 
-import binascii
+import binascii  #Se agregan paquetes necesarios
 
 #Lista con las instrucciones del ISA
 instructionList = ["ADD","SUB","ADDI","SUBI","MLT","MLTI","AND","OR","ANDI","ORI",
-                   "SLR","SLL","LDR","STR","BNE","BEQ","CMP","J"];
+                   "SLR","SLL","LDR","STR","BNE","BEQ","J","CMP"];
 #Lista con el codigo de operacion de la instruccion
 opcodeList = ["00000","00001","00010","00011","00100","00101","00110","00111",
               "01000","01001","01010","01011","01100","01101","01110","01111","10000","10001"];
-#Lista para determinar si el tercer operando es inmediato
-immediateList = [0,0,1,1,0,1,0,0,1,1,1,1,1,1,0,0,0];
-#Tabla con todos las instrucciones
+#Lista para determinar si el tercer si la instruccion usa inmediato
+immediateList = [0,0,1,1,0,1,0,0,1,1,1,1,1,1,0,0,0,0];
+#Tabla con todos las instrucciones a escribir
 instructionTable = [];
 #Lorem_Ipsum
 lorem = ['L','o','r','e','m',' ','i','p','s','u','m']
@@ -30,9 +30,9 @@ end="11111111111111111111111111111111"
 #funcion que agrega los ceros necesarios para los registris en la instruccion en binario, son de 5 bites
 def agregaCeros(reg,num): 
     ceros = ""
-    while len(ceros) < (num-len(bin(int(reg))[2:])):
+    while len(ceros) < (num-len(bin(int(reg))[2:])): #Mientras el numero final sea menor al necesario
         ceros += "0"
-    reg = ceros + bin(int(reg))[2:];
+    reg = ceros + bin(int(reg))[2:];  #Agrega ceros necesarios del registro
     return reg 
 
 ############################################################
@@ -40,8 +40,8 @@ def agregaCeros(reg,num):
 def opCodeOptain(opcode):
     binary="";
     n = 0
-    for i in instructionList:
-        if opcode == i:
+    for i in instructionList: #para cada elemento en la lista
+        if opcode == i:       # Verifica el OPCode
             binary += opcodeList[n];
             break;
         n += 1;
@@ -51,12 +51,16 @@ def opCodeOptain(opcode):
 #Cambia las etiquetas por las direcciones en memoria
 
 def etiqueta(instruction,n):
-    etiqueta = instruction[n][:-1].upper();
+    etiqueta = instruction[n].upper(); #Pasa a mayuscula
     i = 0;
-    while(i < len(instructionTable)):
-        if (instructionTable[i][0][:-1].upper() == etiqueta):
-            instruction[n] = str(i);
-            i = i+1;
+    while(i < len(instructionTable)): #Mientras i sea menor al largo de la lista
+        if (instructionTable[i][0].upper() == etiqueta): #si encuentra una igual
+            if(etiqueta == "FIN"):
+                instruction[n] = str(i); #Las etiquetas de Fin indican el final del archivo
+                i = i+1;
+            else:
+                instruction[n] = str(i+1); #Cambia la instruccion
+                i = i+1;
             return instruction
         i = i+1;
     return -1;
@@ -106,52 +110,54 @@ def binario(instruction):
 #############################################################
 #Agrega NOPS para eliminar riesgos
 
-def agregaNop(tabla,i):
-    for x in range(0,3):
+def agregaNop(tabla,i,n):#Agrega NOPS a la tabla en el indice i, n veces
+    for x in range(0,n):
         tabla.insert(i+1,["NOP"]);
 
 def riesgos(instructionTable):
     i = 0;  #indice de la lista
-    indice = 0;
     while(i < len(instructionTable)):  #mientras el indice sea mejor al largo de la lista
         if(len(instructionTable[i]) > 2):  #se verifican que las instrucciones tengan mas de 2 argumentos
             if(instructionTable[i][0] == "BEQ" or instructionTable[i][0] == "BNE"): #todo branch lleva nops
-                agregaNop(instructionTable,i);#se agregan nops
+                agregaNop(instructionTable,i,3);#se agregan nops
                 i = i+4; # se aumenta el indice por los nops agregados
             else:
+                k = i; # 
                 r1 = instructionTable[i][1]; #registro 1 de la instruccion
                 for j in range(i+1,i+4):
                 #mientras no se salga del rango de la lista, verifica hasta 3 instrucciones adelante
-                    if (len(instructionTable) <= j):
+                    if (len(instructionTable) <= j):                        
                         break;
                     else:
                         if(len(instructionTable[j]) <= 2): # se revisa que la siguiente instruccion no sea salto o etiqueta
-                            j += 1;
+                            k += 1;
                         else:
                             r2 = instructionTable[j][2]; # segundo registro de la instruccion
-                            opcode = opCodeOptain(instructionTable[j][0]); #se obtiene el codigo de operacion para determinar si es branch
-                            if(opcode[0] == "BNE" or opcode[0] == "BEQ"):#revisa si son branches
-                                 if(instructionTable[j][1] == r1 or r2 == r1): # si hay dependencia agrega NOPS para evitar el riesgo
-                                     agregaNop(instructionTable,i);#se agregan nops
-                                     i = i+3;
-                                     break;
-                                 else:
-                                     j = j+1;
-                            elif(immediateList[opcode[1]] == 0):#No es inmediato
-                                r3 = instructionTable[j][3]#[:-1]; # se tiene el tercer registro de la instruccion
+                            opcode = opCodeOptain(instructionTable[j][0]); #se obtiene el codigo de operacion para determinar si es inmediato
+                            if(opcode[1] > 17):
+                                print("Error en la linea: " + str(i));
+                                return -1;
+                            elif(instructionTable[j][0] == "BNE" or instructionTable[j][0] == "BEQ"):#En caso de branches 
+                                r3 = instructionTable[j][1];
                                 if(r2 == r1 or r3 == r1):
-                                    agregaNop(instructionTable,i);#se agregan nops
-                                    i = i+3;
+                                    agregaNop(instructionTable,k,4-(j-i));#se agregan nops
                                     break;
                                 else:
-                                    j = j+1;
+                                    k += 1;#Si no hay dependencia aumenta el indice k
                             else:
-                                if(r2 == r1):
-                                    agregaNop(instructionTable,i);#se agregan nops
-                                    i = i+3;
-                                    break;
+                                if(immediateList[opcode[1]] == 0):#No es inmediato
+                                    r3 = instructionTable[j][3]; # se tiene el tercer registro de la instruccion
+                                    if(r2 == r1 or r3 == r1):
+                                        agregaNop(instructionTable,k,4-(j-i));#se agregan nops
+                                        break;
+                                    else:
+                                        k += 1;
                                 else:
-                                    j = j+1;
+                                    if(r2 == r1):
+                                        agregaNop(instructionTable,k,4-(j-i));#se agregan nops
+                                        break;
+                                    else:
+                                        k += 1;
                 i = i+1;
         else: #es una etiqueta, un salto o un NOP
             i = i+1;
@@ -181,69 +187,62 @@ def agrega(instruction,line):
 #############################################################
 #Lectura y escritura de archivo
 
-def write(instructionTable,depth):
-    riesgos(instructionTable);
-    with open('Program.mif', 'w') as archive:
-        print( "DEPTH = " + str(depth) + ";", file=archive);
-        print("WIDTH = 32;", file=archive);
-        print("ADDRESS_RADIX = HEX;", file=archive);
-        print("DATA_RADIX = BIN; ", file=archive);
-        print("CONTENT", file=archive);
-        print("BEGIN", file=archive);
-        print(str(0) + " : " + nop + ";", file=archive);
-        cont = 1;
-        indice = 0;
-        for i in instructionTable:
-            if(i[0].upper() == "BNE" or i[0].upper() == "BEQ"):
-                label=etiqueta(i,3)
-                if (label != -1):
-                    instructionTable[indice]=label
-                    indice += 1;
+def write(instructionTable,algoritmo): #Escritura de archivo
+    if(riesgos(instructionTable) == -1): #Si los riesgos retorna -1 es que hay errores
+        print("error en el codigo fuente.") 
+        return -1;
+    else:
+        with open(algoritmo, 'w') as archive:
+            print(nop, file=archive);
+            cont = 1;
+            indice = 0;
+            for i in instructionTable: #Para cada elemento de la lista
+                if(i[0].upper() == "BNE" or i[0].upper() == "BEQ"): #Verifica las etiquetas de branch
+                    label=etiqueta(i,3) #Llama a etiqueta con la posicion 
+                    if (label != -1):#si no retorna error
+                        instructionTable[indice]=label #Cambia por la direccion
+                        indice += 1;
+                    else:
+                        return -1;
+                elif (i[0].upper() == "J"): # En caso de los saltos
+                    label=etiqueta(i,1)
+                    if (label != -1):
+                        instructionTable[indice]=label#Cambia la direccion
+                        indice += 1;
+                    else:
+                        return -1;
                 else:
-                    return -1;
-            elif (i[0].upper() == "J"):
-                label=etiqueta(i,1)
-                if (label != -1):
-                    instructionTable[indice]=label
                     indice += 1;
-                else:
-                    return -1;
-            else:
-                indice += 1;
-        for i in instructionTable:
-            if (i[0].upper() == 'FIN'):
-                print(str(hex(cont)[2:]) + " : " + end + ";", file=archive);
-                cont = cont + 1;
-                print(str(hex(cont)[2:]) + " : " + nop + ";", file=archive);
-                cont = cont + 1;
-            elif (i[0] == 'NOP' or len(i) != 1):
-                test = binario(i);
-                if(test != -1):
-                    print(str(hex(cont)[2:]) + " : " + binario(i) + ";", file=archive);
+            for i in instructionTable: #Revisa nuevamente la tabla para convertir a binario
+                if (i[0].upper() == 'FIN'):
+                    print(end, file=archive);#Para Fin agrega fin de archivo
                     cont = cont + 1;
-                else:                    
-                    print("Error en el código fuente");
-                    return -1;
-        while(cont < depth):
-            print(str(hex(cont)[2:]) + " : " + nop + ";", file=archive);
-            cont = cont + 1;
-        print("END;", file=archive);
+                elif (i[0] == 'NOP' or len(i) != 1):                    
+                    test = binario(i);#Agrega los datos en binario
+                    if(test != -1):
+                        print(binario(i), file=archive);
+                        cont = cont + 1;
+                    else:                    
+                        print("Error en el codigo fuente!");
+                        return -1;
 
-def read(source):
+            #print(end, file=archive);
+
+def read(source,algoritmo): #Lee el archivo origen
     cont = 1;
     error = False;
-    with open(source) as archive:
+    with open(source) as archive: #Abre y lee el archivo
         for line in archive:
             if (agrega(line,cont) == -1):
                 error = True;
                 cont = cont + 1;
-    if(error == False):
-        write(instructionTable,128);
+    if(error == False): #Si no da error continua
+        write(instructionTable,algoritmo);
 
-def texto(source):
+def texto(source,destino): #Para lectura del texto de memoria de datos
     listaTexto = [];
     for i in lorem:
-        listaTexto.append(bin(int.from_bytes(i.encode(), 'big'))[2:])
+        listaTexto.append(bin(int.from_bytes(i.encode(), 'big'))[2:]) #los agrega convertidos en binario
     with open(source) as archive:
         for line in archive:
             for i in line:
@@ -258,22 +257,18 @@ def texto(source):
         listaTexto[indice] = ceros + i;
         indice += 1;          
 
-    with open('Text.mif', 'w') as archive:
-        print( "DEPTH = " + str(9142) + ";", file=archive);
-        print("WIDTH = 7;", file=archive);
-        print("ADDRESS_RADIX = HEX;", file=archive);
-        print("DATA_RADIX = BIN; ", file=archive);
-        print("CONTENT", file=archive);
-        print("BEGIN", file=archive);
+    with open(destino, 'w') as archive:
         cont = 0;        
-        while(cont < 9142):
-            for i in listaTexto:
-                if(cont < 9142):
-                    print(str(hex(cont)[2:]) + " : " + i + ";", file=archive);
-                    cont +=1;
-                else:
-                    break;
-        print("END;", file=archive);
+        for i in listaTexto:
+            print(i, file=archive);
 
-#read('algoritmos');
-#texto('Lorem_Ipsum');
+read('prueba.txt','salida.txt')            
+##########################################
+# Para la memoria de instrucciones       #
+#    read(origen,destino);              #
+#                                        #
+#                                        #
+#  Para la memoria de datos              #
+#    texto(origen,destino);               #
+#                                        #
+##########################################
